@@ -630,6 +630,11 @@
           "md": "md/07-02-the-three-building-blocks-hubs-links-satellites.md",
           "slide": "slides/07-02-the-three-building-blocks-hubs-links-satellites.slide",
           "scene": "datavault-model",
+          "highlight": [
+            "hub-customer",
+            "link-order-line",
+            "sat-customer"
+          ],
           "spine": true
         },
         {
@@ -637,6 +642,14 @@
           "md": "md/07-03-hubs-the-business-keys.md",
           "slide": "slides/07-03-hubs-the-business-keys.slide",
           "scene": "datavault-model",
+          "focus": [
+            "hub-order"
+          ],
+          "highlight": [
+            "hub-customer",
+            "hub-order",
+            "hub-product"
+          ],
           "spine": true
         },
         {
@@ -644,6 +657,13 @@
           "md": "md/07-04-links-the-relationships.md",
           "slide": "slides/07-04-links-the-relationships.slide",
           "scene": "datavault-model",
+          "focus": [
+            "link-order-line"
+          ],
+          "highlight": [
+            "link-order-customer",
+            "link-order-line"
+          ],
           "spine": true
         },
         {
@@ -651,6 +671,12 @@
           "md": "md/07-05-satellites-descriptive-history.md",
           "slide": "slides/07-05-satellites-descriptive-history.slide",
           "scene": "datavault-model",
+          "highlight": [
+            "sat-customer",
+            "sat-order",
+            "sat-product",
+            "sat-measures"
+          ],
           "spine": true
         },
         {
@@ -658,6 +684,17 @@
           "md": "md/07-06-hash-keys-and-load-metadata.md",
           "slide": "slides/07-06-hash-keys-and-load-metadata.slide",
           "scene": "datavault-model",
+          "focus": [
+            "hub-customer"
+          ],
+          "highlight": [
+            "hubc-hk",
+            "hubc-load",
+            "hubc-src",
+            "lol-hk",
+            "satc-load",
+            "satc-diff"
+          ],
           "spine": true
         },
         {
@@ -679,6 +716,15 @@
           "md": "md/07-09-from-data-vault-to-star-the-information-mart.md",
           "slide": "slides/07-09-from-data-vault-to-star-the-information-mart.slide",
           "scene": "datavault-model",
+          "focus": [
+            "link-order-line"
+          ],
+          "highlight": [
+            "hub-customer",
+            "sat-customer",
+            "link-order-line",
+            "sat-measures"
+          ],
           "spine": true
         },
         {
