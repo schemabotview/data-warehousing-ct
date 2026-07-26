@@ -1,0 +1,24 @@
+# Satellites — descriptive history
+
+## All the descriptive data + full history
+
+```
+SatCustomer
+  customer_hk    FK → parent hub
+  load_date      part of the PK
+  hash_diff      hash of attributes (change detection)
+  name, email, segment, city, region, country …
+```
+- PK = **(customer_hk, load_date)** → **many rows per parent, one per point in time**
+
+## History is built in
+
+- Ana Madrid → Barcelona = **insert** a new row; old row **stays**
+- Native **SCD-2** — `load_date` sequencing gives versions free
+
+## Two kinds
+
+- **On a hub** → descriptive context (`SatCustomer`, `SatProduct`)
+- **On a link** → transaction measures (`SatSalesMeasures`)
+
+## Split by **source** or **rate of change** → parallel loads

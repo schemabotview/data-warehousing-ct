@@ -1,0 +1,22 @@
+# Why Data Vault exists
+
+## The star's weakness for integration
+
+- Superb for **reporting** — but **rigid** to change
+- New source / relationship / grain → re-engineer facts & dims
+- History **bolted on** via SCD
+
+## Built for the raw integration layer
+
+- **Agility** — absorb change by **adding** tables, never restructuring
+- **Auditability** — every row stamped **source + load time**, never overwritten → the immutable **system of record**
+- **Parallel loading** — hubs, links, sats load independently → scales to MPP
+
+## The core idea
+
+- Separate **business keys · relationships · context**
+- Three table types: **hubs · links · satellites** — each evolves alone
+
+## A layer, not a rival
+
+- Vault **integrates & preserves** · a **star mart** sits on top to query

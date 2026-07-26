@@ -1,0 +1,9 @@
+Hubs — the business keys.
+
+A hub is the simplest table in the vault: the list of unique business keys for one entity, and nothing else. It answers exactly one question — which customers, or products, or orders, exist? — and it stays deliberately bare.
+
+So what's in a hub? Take hub customer, in full. It has the customer hash key — the surrogate primary key, computed as a hash of the customer i-d. It has the customer i-d itself — the business key from the source. It has a load date — when this key first entered the vault. And it has a record source — where it first came from, like web, POS, or ERP. There's one row per distinct customer i-d ever seen, and no descriptive attributes — no name, no city; those belong in a satellite. A hub is identity only.
+
+Why keep it so bare? Because business keys are the most stable thing in an enterprise. A customer number, an order number, a SKU — these rarely change, even as everything about them does. And that stability makes the hub the permanent anchor that every link and satellite attaches to. Build the hubs, and the skeleton of the whole vault is fixed; the changeable parts just hang off it.
+
+And here's the quiet power of hubs: they integrate the sources. The same customer may appear in the web store, the point-of-sale system, and the ERP — that's three systems, three records. But because the hub keys on the shared business key, the customer i-d, all three collapse to one hub row. The hub is where source systems are integrated into a single version of each entity — and the record source still notes where each was first seen, so you keep the full lineage. Jabra's vault has a hub for each core entity: Customer, Product, Order, Invoice, Payment, Shipment, Promotion, Warehouse, and Carrier. So: a hub is a bare list of unique business keys — identity only, no descriptions. It's the stable anchor of the vault, and the point where many sources integrate into one entity.

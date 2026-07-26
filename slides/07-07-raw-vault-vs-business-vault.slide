@@ -1,0 +1,21 @@
+# Raw vault vs business vault
+
+## The split: has a **business rule** been applied?
+
+## Raw vault — data **as it arrived**
+
+- Loaded verbatim — **no rules, no cleansing, no interpretation**
+- Never overwritten → the immutable **system of record**
+- Proves exactly **what a source said, and when**
+- The Jabra hubs / links / sats *are* the raw vault
+
+## Business vault — where the **rules** live
+
+- A **thin layer on top**, same hub/link/sat structures
+- **Computed satellites** (cleansed address, margin), **derived links**, KPIs
+
+## Why split
+
+- **Audit intact** — raw stays pristine
+- Rule changes → **rebuild the business vault**, raw never moves
+- Keep it **sparse**; mart is built from **raw + business** vault

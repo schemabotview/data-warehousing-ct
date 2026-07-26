@@ -1,0 +1,21 @@
+# From Data Vault to star — the information mart
+
+## The mapping is mechanical
+
+```
+Hub  + Satellite(s)        → Dimension   (HubCustomer+SatCustomer → DIM_CUSTOMER)
+Link + measure Satellite   → Fact        (LinkOrderLine+SatSalesMeasures → FACT_SALES)
+Reference table            → small Dim   (RefDate → DIM_DATE)
+```
+- Satellite `load_date` history **is** your SCD-2 — versioned dims free
+- Link grain = fact grain (product-on-order = order line)
+
+## Virtual or materialized
+
+- Often just **views** over the vault (virtual, always live)
+- Or a **materialized** rebuild when volume demands
+
+## Why it's the payoff
+
+- **Rebuild** the mart anytime, no re-sourcing · **point-in-time** versions
+- **Many** marts (Sales, Finance…) from **one** vault

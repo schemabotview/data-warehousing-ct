@@ -1,0 +1,22 @@
+# Hash keys & load metadata
+
+## The hash key (`_hk`) — surrogate PK
+
+```
+customer_hk   = hash(customer_id)
+order_line_hk = hash(order_hk + product_hk)
+```
+- A **deterministic** MD5/SHA of the business key(s)
+- Same key → same hash **anywhere, no lookup**
+- → hubs, links, sats load **independently, in parallel** (MPP scale)
+
+## Load metadata — on every row
+
+- **`load_date`** — when it entered; sequencing sats **is** the history
+- **`record_source`** — origin (`web`/`pos`/`erp`) → **audit lineage**
+
+## `hash_diff` — cheap change detection (satellites)
+
+- Hash of **all attributes** · incoming vs latest:
+- **Differs** → insert new version · **matches** → skip
+- Same hash trick as the SCD-2 merge (module 06)

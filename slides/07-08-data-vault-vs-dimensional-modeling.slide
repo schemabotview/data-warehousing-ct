@@ -1,0 +1,23 @@
+# Data Vault vs dimensional modeling
+
+## Not rivals — **different jobs**
+
+```
+                 Dimensional (star)   Data Vault
+Optimized for    query & reporting    integration & loading
+Structure        denormalized, few    normalized, many tables
+History          SCD (bolted on)      native (satellites)
+Agility          low                  high
+Query perf       fast, simple         slow, many joins
+Audience         analysts, BI         ETL / engineering
+Auditability     limited              full (source + time)
+```
+
+## The resolution — **layer** them
+
+```
+sources → DATA VAULT (raw integration, system of record)
+                    → STAR marts (query layer) → BI
+```
+- Vault = **integrate & preserve** · star = **present & query**
+- Star's rigidity stops mattering — you can **rebuild** it from the vault

@@ -1,0 +1,23 @@
+# Hubs — the business keys
+
+## Identity only — nothing else
+
+```
+HubCustomer
+  customer_hk    hash key (PK) = hash(customer_id)
+  customer_id    the BUSINESS KEY from the source
+  load_date      when the key first entered the vault
+  record_source  where it first came from
+```
+- One row per **distinct** business key · **no** descriptive attributes
+
+## The stable spine
+
+- Business keys **rarely change** → the hub is the **permanent anchor**
+- Links & satellites hang off it
+
+## Hubs integrate the sources
+
+- Same customer in **web + POS + ERP** → **one** hub row (shared `customer_id`)
+- The point where sources become **one entity** · lineage kept in `record_source`
+- Jabra hubs: Customer · Product · Order · Payment · Shipment · …

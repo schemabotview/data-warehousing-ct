@@ -1,4 +1,4 @@
-# Loading an SCD-2 dimension — the merge pattern
+# Loading an SCD-2 dimension
 
 ## Match source to dim on the **natural key**, then:
 

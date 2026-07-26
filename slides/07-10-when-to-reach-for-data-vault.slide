@@ -1,0 +1,20 @@
+# When to reach for Data Vault
+
+## Reach for it when…
+
+- **Many source systems** to integrate → hubs merge entities across sources
+- **Sources & requirements change often** → absorb change by **adding** tables
+- **Audit / compliance / lineage** required → source + time on every row
+- **Scale needs parallel loading** → deterministic hash keys, MPP
+- **Long-lived EDW** → future-proofing beats upfront effort
+
+## Don't bother when…
+
+- A **small, stable, single-source** mart
+- A **quick** analytics deliverable, settled requirements
+- **No audit or integration** burden → model a **star directly**
+
+## Rule of thumb
+
+- DV = **enterprise integration layer** feeding many star marts
+- Focused, stable mart → **skip it, go straight to a star**

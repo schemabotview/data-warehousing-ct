@@ -1,0 +1,9 @@
+The three building blocks — hubs, links, and satellites.
+
+Data Vault models everything with exactly three table types. Each captures one of the three concerns a star fuses together, and keeping them physically separate is the whole source of the vault's agility.
+
+So, one concern each. A hub is identity: the list of unique business keys for an entity. "This customer exists." Just the key, nothing descriptive. A link is relationship: a connection or transaction between hubs. "This customer placed this order." Just the keys of the things being related. And a satellite is context: the descriptive attributes and measures, with full history, hanging off a hub or a link. "This customer's name and city, as loaded on this date."
+
+How do they connect? Hubs are the anchors; links tie hubs together; and satellites describe hubs and links. Here's the Jabra vault in miniature. Hub customer and hub order are joined by a link — link order-customer. Hub order and hub product are joined by another link — link order-line. Each hub is described by its own satellite: sat customer, sat order. And the order-line measures — quantity, line total — live in a satellite on the link: sat sales-measures.
+
+Why split it three ways? Because now each concern changes independently, without touching the others. A new descriptive attribute means you add a column to a satellite, or add a new satellite — and the hubs and links are unchanged. A new relationship means you add a link — and the hubs and satellites are unchanged. And a new source or entity means you add a hub, plus its satellite — and everything else is unchanged. That "add, never restructure" property is exactly the agility section one promised — and it falls straight out of this three-way separation. So: three tables, three jobs. Hubs hold keys, links hold relationships, satellites hold context and history. Separating them is what lets a Data Vault grow by addition, instead of by redesign.

@@ -1,0 +1,23 @@
+# Links — the relationships
+
+## Keys only — a connection between hubs
+
+```
+LinkOrderLine
+  order_line_hk  hash key (PK) = hash(order_hk + product_hk)
+  order_hk       FK → HubOrder
+  product_hk     FK → HubProduct
+  load_date, record_source
+```
+- `LinkOrderLine` = product-on-order (the **sale-line grain**)
+- No attributes, no measures — just the hubs it ties
+
+## The golden rule — always **many-to-many**
+
+- Model M:N even if today it's 1:N
+- Cardinality can **change** without restructuring (a star would rebuild the fact)
+
+## The relationship's data → a **satellite on the link**
+
+- `LinkOrderLine` carries no numbers
+- `SatSalesMeasures`: `quantity`, `unit_price`, `line_total`
