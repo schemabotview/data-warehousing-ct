@@ -1,0 +1,15 @@
+# The lakehouse
+
+## One system, not two
+
+- Warehouse-style **structure & management** placed **on cheap lake storage**
+- Ends the copy-twice split between a separate lake and warehouse
+
+## How
+
+- Open columnar files (Parquet) + a **transactional table layer** — Delta · Iceberg · Hudi
+- Brings **ACID**, **schema enforcement / evolution**, **time travel** to the lake
+
+## Why it matters
+
+- **BI + ML on one copy**; land raw then curate in place (ELT) — no separate warehouse

@@ -1,0 +1,15 @@
+# Data marts
+
+## A focused slice of the warehouse
+
+- A **subject-specific subset** for one department — sales, finance, marketing
+- Smaller, faster, in the **team's vocabulary**
+
+## Why
+
+- **Focus** · **performance** · **security** · **team autonomy**
+
+## Two ways to build
+
+- **Dependent** — carved from the central warehouse (top-down) — consistent
+- **Independent** — built straight from sources (bottom-up) — fast, but **conform dimensions** or you get silos

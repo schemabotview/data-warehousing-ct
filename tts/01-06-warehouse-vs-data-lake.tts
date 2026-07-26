@@ -1,0 +1,7 @@
+Warehouse versus data lake.
+
+A data warehouse stores structured, processed data — cleaned, transformed, and modeled for analysis and business intelligence. A data lake stores raw data in its native format — structured, semi-structured, and unstructured — kept cheaply until someone needs it.
+
+Line them up and the differences are systematic. The warehouse uses schema-on-write: you define the structure up front, when you load. The lake uses schema-on-read: you define the structure later, when you query. The warehouse is loaded by E-T-L — transform, then load. The lake is loaded by E-L-T — load first, transform later. The warehouse serves business analysts and B-I; the lake serves data scientists and engineers. The warehouse costs more, because storage is curated and compute is bundled; the lake costs less, because it sits on cheap object storage. And the warehouse's data is high-quality and consistent, while the lake's is raw and variable.
+
+So when do you use which? Use a warehouse when you already know the questions — recurring reports, dashboards, trusted metrics. Use a lake when you don't yet — exploratory analytics, machine learning, or raw data you just want to keep now and shape later. In practice many organizations run both: raw data lands in the lake, and curated subsets flow into the warehouse.

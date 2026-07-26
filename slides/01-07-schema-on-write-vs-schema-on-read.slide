@@ -1,0 +1,16 @@
+# Schema-on-write vs schema-on-read
+
+## When do you impose structure?
+
+- **On write** (warehouse) — schema applied **as you load**; ETL conforms data first
+- **On read** (lake) — stored **as-is**; structure applied **when you query**
+
+## The trade-off
+
+- On write — **trust & fast reads**, but model up front & rigid
+- On read — **flexible & cheap ingest**, but every reader parses; quality varies
+
+## Pairs with ETL vs ELT
+
+- **ETL** — transform → load (schema-on-write)
+- **ELT** — load → transform later (schema-on-read; cloud & lakehouse, §08)

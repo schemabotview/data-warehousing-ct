@@ -1,0 +1,15 @@
+# The modeling journey
+
+## Three levels, business → tables
+
+- **Conceptual** — key **entities & relationships**, no tech (stakeholders validate)
+- **Logical** — tables, columns, **keys**, normalized or **facts & dimensions** (platform-independent)
+- **Physical** — real DDL: data types, **indexes, partitioning**, platform tuning
+
+## Why top-down
+
+- Agree **concepts** with the business → design **logical** structure → commit to a **physical** build
+
+## In this course
+
+- Modules 02–08 = **logical** (keys, facts, dims, schemas) · Module 10 = **physical** (cloud & MPP)

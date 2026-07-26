@@ -1,0 +1,11 @@
+Schema-on-write versus schema-on-read.
+
+The deepest difference between a warehouse and a lake isn't where the data sits — it's when you impose structure on it.
+
+Schema-on-write is the warehouse approach. You apply the schema as the data is loaded. You define the tables, types, and constraints up front; E-T-L transforms incoming data to fit them, and anything that doesn't conform gets fixed or rejected on the way in. The payoff is that reads are fast and predictable, and every consumer sees clean, consistent data. The cost is that you have to model up front, and changing the schema later is real work.
+
+Schema-on-read is the lake approach. You store the data exactly as it arrives and apply structure only when you query it. Each reader interprets the raw files with whatever schema it needs. Ingest is trivial and flexible — you can dump anything — but now every reader carries the burden of parsing and cleaning, and the quality is only as good as each individual query.
+
+These pair naturally with two pipeline orders. E-T-L — extract, transform, load — cleans and conforms the data before it lands, which fits schema-on-write and the warehouse. E-L-T — extract, load, transform — lands the raw data first and transforms it later, inside the target, which fits schema-on-read and leans on cheap storage and scalable compute.
+
+So it's a trade-off. Schema-on-write buys you trust and speed at read time, in exchange for up-front modeling and some rigidity. Schema-on-read buys you flexibility and cheap ingest, in exchange for messier, slower reads. Modern cloud platforms blur the line — load raw, then transform in place — and that's exactly what the lakehouse is built on.

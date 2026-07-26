@@ -1,0 +1,15 @@
+Warehouse components — sources, E-T-L, storage, marts, and B-I.
+
+A data warehouse is an end-to-end pipeline, and data flows through six kinds of component from left to right.
+
+It starts with data sources — where the raw data comes from: operational databases, flat files and A-P-Is, and SaaS apps like C-R-M and E-R-P. Each has its own schema and quirks.
+
+Next is E-T-L, the movement layer: extract from the sources, transform the data — cleaning it, removing duplicates, and conforming it to common definitions — and load it into the warehouse. A staging area holds the raw extracts before they're transformed. E-L-T just swaps the order, loading first and transforming later, and we'll come back to that.
+
+Then storage — the warehouse database itself: the curated, integrated tables, facts and dimensions, tuned for analytical reads.
+
+Wrapping all of it is metadata — data about the data: table and column definitions, lineage that tells you where each value came from, and the business glossary. It's the catalog that makes the warehouse understandable and governable.
+
+From storage we carve data marts — subject-specific subsets serving one department, like sales or finance — which we'll cover next.
+
+And on top sit the access and B-I tools: dashboards and reports, ad-hoc and O-L-A-P analysis, and data-science and machine-learning workloads. That's the consumption layer, where curated data becomes decisions.

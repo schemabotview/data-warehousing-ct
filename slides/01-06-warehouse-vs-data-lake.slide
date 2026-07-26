@@ -1,0 +1,17 @@
+# Warehouse vs data lake
+
+## Two ways to store at scale
+
+- **Warehouse** — **structured, processed** data, modeled for analysis & BI
+- **Lake** — **raw data**, native format (structured → unstructured), kept cheaply
+
+## Side by side (warehouse · lake)
+
+- **Schema** — schema-on-write · schema-on-read
+- **Processing** — ETL (transform → load) · ELT (load → transform)
+- **Users** — analysts & BI · data scientists & engineers
+- **Cost / quality** — higher, curated · lower, raw
+
+## When
+
+- Warehouse when you **know the questions**; lake when you **don't yet** — many run both

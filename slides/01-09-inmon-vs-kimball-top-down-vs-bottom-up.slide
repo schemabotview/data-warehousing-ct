@@ -1,0 +1,15 @@
+# Inmon vs Kimball
+
+## Two approaches — where do you start?
+
+- **Inmon (top-down)** — build the **enterprise warehouse** first (normalized), derive marts from it
+- **Kimball (bottom-up)** — build **dimensional marts** first (star), warehouse emerges
+
+## Trade-offs
+
+- **Inmon** — consistent, robust · but slower & heavier up front
+- **Kimball** — fast, business-friendly · but needs **conformed dimensions** or silos
+
+## Modern take
+
+- Often **hybrid** — integrated core (Inmon / Data Vault) feeding Kimball marts for BI

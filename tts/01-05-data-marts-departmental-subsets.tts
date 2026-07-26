@@ -1,0 +1,9 @@
+Data marts — departmental subsets.
+
+A data mart is a subject-specific subset of the warehouse, scoped to a single department or business process — sales, finance, marketing. Where the enterprise warehouse holds the whole organization's integrated data, a mart gives one team a smaller, focused, faster slice, tailored to the way they work.
+
+Why bother? Four reasons. Focus — a team sees only the tables relevant to them, in their own vocabulary. Performance — less data and pre-aggregated tables mean faster queries. Security — you can scope access to a department's mart. And autonomy — a team can iterate on its mart without disturbing anyone else.
+
+There are two ways to build one. A dependent mart is carved from the central enterprise warehouse — that's the top-down approach: warehouse first, marts derived from it, and everything stays consistent because it all conforms to the warehouse. An independent mart is built directly from the sources for one department, without a central warehouse first — that's the bottom-up approach. It's faster to stand up, but it risks creating silos.
+
+The thing that keeps independent marts from drifting apart is conformed dimensions. If the sales mart and the finance mart share the very same customer and date dimensions, their numbers line up and can be combined. That shared set of dimensions is the bus that ties separate marts into one coherent warehouse — and we'll go deep on it in the dimensions module.

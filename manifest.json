@@ -32,6 +32,13 @@
           "md": "md/01-03-oltp-vs-olap-the-two-workloads.md",
           "slide": "slides/01-03-oltp-vs-olap-the-two-workloads.slide",
           "scene": "dw-architecture",
+          "focus": [
+            "warehouse"
+          ],
+          "highlight": [
+            "src-oltp",
+            "warehouse"
+          ],
           "spine": true
         },
         {
@@ -39,6 +46,17 @@
           "md": "md/01-04-warehouse-components-sources-etl-storage-marts-bi.md",
           "slide": "slides/01-04-warehouse-components-sources-etl-storage-marts-bi.slide",
           "scene": "dw-architecture",
+          "focus": [
+            "warehouse"
+          ],
+          "highlight": [
+            "sources",
+            "pipeline",
+            "warehouse",
+            "marts",
+            "bi",
+            "metadata"
+          ],
           "spine": true
         },
         {
@@ -46,6 +64,14 @@
           "md": "md/01-05-data-marts-departmental-subsets.md",
           "slide": "slides/01-05-data-marts-departmental-subsets.slide",
           "scene": "dw-architecture",
+          "focus": [
+            "marts"
+          ],
+          "highlight": [
+            "mart-sales",
+            "mart-finance",
+            "mart-mktg"
+          ],
           "spine": true
         },
         {
@@ -53,6 +79,10 @@
           "md": "md/01-06-warehouse-vs-data-lake.md",
           "slide": "slides/01-06-warehouse-vs-data-lake.slide",
           "scene": "dw-architecture",
+          "highlight": [
+            "warehouse",
+            "lake"
+          ],
           "spine": true
         },
         {
@@ -60,6 +90,14 @@
           "md": "md/01-07-schema-on-write-vs-schema-on-read.md",
           "slide": "slides/01-07-schema-on-write-vs-schema-on-read.slide",
           "scene": "dw-architecture",
+          "focus": [
+            "pipeline"
+          ],
+          "highlight": [
+            "staging",
+            "transform",
+            "lake"
+          ],
           "spine": true
         },
         {
@@ -67,6 +105,10 @@
           "md": "md/01-08-the-lakehouse-where-the-two-converge.md",
           "slide": "slides/01-08-the-lakehouse-where-the-two-converge.slide",
           "scene": "dw-architecture",
+          "highlight": [
+            "warehouse",
+            "lake"
+          ],
           "spine": true
         },
         {
@@ -74,6 +116,13 @@
           "md": "md/01-09-inmon-vs-kimball-top-down-vs-bottom-up.md",
           "slide": "slides/01-09-inmon-vs-kimball-top-down-vs-bottom-up.slide",
           "scene": "dw-architecture",
+          "focus": [
+            "warehouse"
+          ],
+          "highlight": [
+            "warehouse",
+            "marts"
+          ],
           "spine": true
         },
         {
@@ -81,6 +130,13 @@
           "md": "md/01-10-the-modeling-journey-conceptual-logical-physical.md",
           "slide": "slides/01-10-the-modeling-journey-conceptual-logical-physical.slide",
           "scene": "dw-architecture",
+          "focus": [
+            "warehouse"
+          ],
+          "highlight": [
+            "fact",
+            "dim"
+          ],
           "spine": true
         }
       ]

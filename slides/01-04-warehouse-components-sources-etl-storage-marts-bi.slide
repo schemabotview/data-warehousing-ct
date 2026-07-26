@@ -1,0 +1,13 @@
+# Warehouse components
+
+## The pipeline, left to right
+
+- **Data sources** — OLTP DBs · files & APIs · SaaS apps
+- **ETL / ELT** — extract → transform (clean, conform) → load; **staging** holds raw extracts
+- **Storage** — the curated warehouse DB — facts & dimensions
+
+## Around it
+
+- **Metadata** — definitions, lineage & catalog — makes it governable
+- **Data marts** — departmental subsets *(§05)*
+- **Access / BI** — dashboards · ad-hoc / OLAP · data science
