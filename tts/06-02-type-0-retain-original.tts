@@ -1,0 +1,9 @@
+Type 0 — retain original.
+
+The simplest strategy is to never change the value at all. That's Type 0 — retain original. The attribute is set when the row is first loaded, and every later update from the source is simply ignored.
+
+Where Type 1 — which is the next section — overwrites with each new value, Type 0 refuses it. The original stands forever. So Ana's row carries her date of birth, the twelfth of March nineteen-ninety, and her original signup date, the first of June twenty twenty-one. If a bad feed later sends a different date of birth, Type 0 keeps the original. The column is effectively write-once.
+
+When is "original" the point? Type 0 is right for attributes that are immutable by nature, or whose original value is the meaningful one. On the one hand, truly fixed facts: a date of birth, a country of birth, a product's original launch date. On the other, "original" measures you want to preserve: the customer's original signup date, their credit score at account opening, the first plan they ever joined on. And the intent here is explicit — even if the source can change this field, the warehouse chooses to hold the original, because the analytical question is about the beginning, not the present.
+
+The trade-off is straightforward. Type 0 keeps no current value and no history of change — just the first value, permanently. So if the business later cares about the current value of that attribute, Type 0 is the wrong choice; you'd model it, or a companion column, as Type 1 or Type 2 instead. So: Type 0 is write-once. Capture the original and never touch it. Use it for genuinely immutable facts and as-originally-recorded values — not for anything whose present value matters.

@@ -1,0 +1,22 @@
+# The problem — dimensions change over time
+
+## Facts are frozen; **dimensions drift**
+
+- Ana moves Madrid → Barcelona · a product is re-priced · B2C → B2B
+- **Slow**, occasional, unpredictable changes
+
+## The question with no default answer
+
+- Ana bought **last year** (Madrid), lives **now** in Barcelona
+- "Sales by region" — credit that sale to…
+- **Barcelona** — the world *as it is* · **Madrid** — *as it was*
+- **Both are correct** — a modeling decision, made up front
+
+## SCD — the framework
+
+- Manage & track dimension change over time
+- Types differ by **how much history you keep**: none · all · some
+
+## The mechanism
+
+- Rides on the **surrogate key** — same `customer_id`, many `customer_key`s

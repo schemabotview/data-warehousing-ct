@@ -1,0 +1,22 @@
+# Type 0 — retain original
+
+## Write once, then freeze
+
+- Set at first load · every later source update **ignored**
+- Type 1 *overwrites*; Type 0 *refuses*
+
+```
+customer_key customer_id date_of_birth original_signup_date
+1101         C-4471      1990-03-12    2021-06-01
+```
+- A bad feed can't change it — the column is **write-once**
+
+## When "original" is the point
+
+- **Immutable facts** — `date_of_birth`, launch date
+- **"Original" values** — `original_signup_date`, opening credit score
+
+## The trade-off
+
+- Keeps **no** current value and **no** change history — just the first
+- If the *present* value matters → use Type 1 or Type 2 instead

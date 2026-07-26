@@ -1,0 +1,21 @@
+# Type 6 — the hybrid (1 + 2 + 3)
+
+## All three at once — 1 + 2 + 3 = 6
+
+```
+key  historical_region current_region effective  expiry     cur
+1101 Centro            Cataluña       2021-06-01 2026-03-31 N
+1108 Cataluña          Cataluña       2026-04-01 9999-12-31 Y
+```
+- **`historical_region`** — frozen per version (Type 2, **as-was**)
+- **`current_region`** — latest, overwritten on **all** rows (Type 1+3, **as-is**)
+
+## What it buys — two questions, one table
+
+- **As-was** — group by `historical_region` → old sales credit **Madrid**
+- **As-is** — group by `current_region` → *all* sales credit **Cataluña**
+
+## The cost
+
+- More columns · **heavier ETL** — each change also sweeps `current_*` across all prior rows
+- The most capable, most complex common type

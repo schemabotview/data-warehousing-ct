@@ -1,0 +1,24 @@
+# Effective dates & the active flag
+
+## Three control columns
+
+- **`effective_date`** — the day this version became current
+- **`expiry_date`** — the day it stopped
+- **`is_current`** — `Y`/`N`, marks the one live row
+
+```
+customer_key city      effective  expiry     current
+1101         Madrid    2021-06-01 2026-03-31 N
+1108         Barcelona 2026-04-01 9999-12-31 Y
+```
+- A contiguous timeline — no gaps, no overlaps
+
+## The high-date trick
+
+- Current row's expiry = **`9999-12-31`**, not NULL → one `BETWEEN` fits all
+
+## How you query it
+
+- **Current** — `WHERE is_current = 'Y'`
+- **As of date D** — `WHERE D BETWEEN effective_date AND expiry_date`
+- ETL invariant: exactly **one** current row · a **continuous** timeline

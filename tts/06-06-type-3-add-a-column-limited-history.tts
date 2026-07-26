@@ -1,0 +1,9 @@
+Type 3 — add a column, limited history.
+
+Type 3 keeps history not by adding rows, but by adding a column. Alongside the current value, the row carries a "previous" column — so you keep the current value and one prior value, in the same single row.
+
+Ana moves from Madrid to Barcelona. A Type 3 dim customer keeps her one row and records both cities: current city Barcelona, previous city Madrid. No new row, no new surrogate key — just a previous-city column filled in. And only the latest change survives: when the value changes, the old current city slides into previous city, and whatever was already in previous city is overwritten and lost.
+
+Type 3 is rare, but it fits one shape of problem really well: when you want to report facts under both an old and a new grouping at the same time. The classic case is a re-org, or re-alignment — sales regions get redrawn, and for a transition period every fact should be viewable under both the old region and the new region. So you add current region and previous region, and a report can group by either one — comparing the business under the old and the new structure, side by side, without the full row-versioning of Type 2.
+
+But it falls short in two ways. First, it keeps only one step of history — a second move, say Barcelona to Valencia, pushes Madrid out entirely; you'd keep Valencia and Barcelona, and lose Madrid. And second, there are no dates — you know the previous value, but not when it changed, so you can't reconstruct which value applied to a specific fact. So Type 3 is a limited-history tool, not a substitute for Type 2. When you need the full timeline, or the dates of change, use Type 2. When you only need "current versus prior" for dual grouping, Type 3 is the lean fit. In short: Type 3 adds a previous-value column — current plus one prior value, no extra rows. Perfect for old-versus-new reporting during a re-org — but it remembers only the last change, and it keeps no dates.

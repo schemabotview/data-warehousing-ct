@@ -1,0 +1,25 @@
+# Type 1 — overwrite (no history)
+
+## One row, updated in place
+
+```
+before:  1101 | C-4471 | Ana | Madrid
+after:   1101 | C-4471 | Ana | Barcelona
+```
+- Same `customer_key`, new value · old value **gone**
+- Mechanically an **UPSERT** — simplest, most common
+
+## What it does to the facts
+
+- All of Ana's **past** sales now roll up under **Barcelona**
+- Reports the world **as it is now** — the **past is rewritten**
+- Can't ask "her city *at the time* of that sale" — lost
+
+## When it's right
+
+- **No history needed** · **corrections** (never keep the wrong old value)
+- **"As-is"** is the only question
+
+## Limitation
+
+- Lossy — can't report **as-it-was** → use Type 2 when history matters

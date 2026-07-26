@@ -1,0 +1,22 @@
+# Type 2 — add a row (full history)
+
+## Expire the old, insert the new
+
+```
+customer_key customer_id city      effective  expiry     current
+1101         C-4471      Madrid    2021-06-01 2026-03-31 N
+1108         C-4471      Barcelona 2026-04-01 9999-12-31 Y
+```
+- Same **natural key**, a new **surrogate key** per version
+- The **most popular** SCD type
+
+## Where the surrogate pays off
+
+- Sales before Apr 2026 → `1101` → **Madrid**
+- Sales after → `1108` → **Barcelona**
+- "Sales by region" = each sale under the region **true then** (as-was)
+- Impossible with a natural-key join
+
+## The cost
+
+- Dimension **grows** · needs control columns + expire-and-insert ETL

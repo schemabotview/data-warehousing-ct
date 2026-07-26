@@ -1,0 +1,23 @@
+# Loading an SCD-2 dimension — the merge pattern
+
+## Match source to dim on the **natural key**, then:
+
+- **New key** → INSERT: new SK, `effective=today`, `expiry=9999`, `current=Y`
+- **Changed tracked attr** → **expire-and-insert**:
+  - UPDATE old row → `expiry=today`, `current=N`
+  - INSERT new version → new SK, `current=Y`
+- **No change** → do nothing
+- **Missing from source** → per policy
+
+## Detect change cheaply
+
+- Compare a **hash** of tracked columns — differs = change
+
+## One statement, or one tool
+
+- A single SQL **`MERGE`** (matched → update, not matched → insert)
+- Or a **dbt snapshot** / native change-tracking
+
+## Must be **idempotent**
+
+- Re-running the load makes **no** duplicate versions — safe to restart (module 09)

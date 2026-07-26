@@ -1,0 +1,22 @@
+# Type 3 — add a column (limited history)
+
+## History in a **column**, not a row
+
+```
+customer_key name     current_city previous_city
+1101         Ana Ruiz Barcelona    Madrid
+```
+- Same row, same key — a **`previous_` column** filled in
+- Old value slides into `previous_`; **older history overwritten**
+
+## The narrow, specific use
+
+- Report facts under **both** an old and a new grouping at once
+- Classic case: a **re-org** — regions redrawn, group by either
+- `current_region` + `previous_region`, side by side
+
+## Where it falls short
+
+- **One step only** — a second move drops the oldest value
+- **No dates** — can't tie a value to a specific fact
+- Not a substitute for **Type 2** (full timeline + dates)

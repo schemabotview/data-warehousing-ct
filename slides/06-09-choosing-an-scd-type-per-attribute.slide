@@ -1,0 +1,24 @@
+# Choosing an SCD type per attribute
+
+## SCD is chosen **per column**, not per table
+
+- One `DIM_CUSTOMER`, many policies:
+- `date_of_birth` → **0** · `name` fix → **1** · `city`/`segment` → **2**
+- `region` re-org → **3** · `income_band` → **4** mini-dim
+
+## Ask per column: value needed **at the time of the fact**?
+
+- **No, old value worthless** → **1** · **Never changes** → **0**
+- **Yes, full timeline** → **2** · **current + one prior** → **3**
+- **Yes, but changes too fast** → **4** · **as-was + as-is** → **6**
+
+## Quick reference
+
+```
+0 retain original   original only
+1 overwrite         none
+2 add a row         full timeline
+3 add a column      current + one prior
+4 history/mini-dim  full, relocated
+6 hybrid 1+2+3      full + current on every row
+```

@@ -1,0 +1,25 @@
+# Type 4 — history / mini-dimension tables
+
+## Move the changing part to its **own table**
+
+## A · history table
+
+```
+DIM_CUSTOMER          current row only (small, fast)
+DIM_CUSTOMER_HISTORY  every past version + dates
+```
+- Type 2's history, split off the hot current record
+
+## B · mini-dimension
+
+- Volatile, band-able attrs leave the big dim → their own table
+```
+FACT_SALES.customer_key     ─► DIM_CUSTOMER     (stable)
+FACT_SALES.demographics_key ─► DIM_DEMOGRAPHICS (volatile bands)
+```
+- Change = fact points at a **new** `demographics_key` — **no** new customer row
+
+## When to reach for it
+
+- **History table** — lean current dim, history kept aside
+- **Mini-dim** — a subset changes too fast for Type 2 to hold
