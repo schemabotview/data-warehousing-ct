@@ -1,0 +1,24 @@
+# Periodic snapshot facts
+
+## A photo of a **state**, every period
+
+- One row per entity per **day / week / month** — changed or not
+- Jabra `FACT_INVENTORY_SNAPSHOT`: product × warehouse × **day**
+
+## Materialise the level
+
+```
+snapshot_date product warehouse on_hand_qty
+01-Feb        Headset Madrid     1,270
+02-Feb        Headset Madrid     1,180
+```
+- "Stock on 1-Feb" = one fast **lookup**, not a re-sum
+
+## Measures are **semi-additive**
+
+- Sum across warehouses ✓ · sum across **dates** ✗
+- Across time → **average** or **last value**
+
+## When to use
+
+- Tracking a **level over time** — inventory, balances, headcount

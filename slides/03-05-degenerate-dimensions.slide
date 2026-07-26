@@ -1,0 +1,22 @@
+# Degenerate dimensions
+
+## A dimension value with **no table**
+
+- Lives right on the fact row
+- Jabra: `order_id`, `order_line_id`, `order_status`
+
+## Why the order number degenerates
+
+- FACT_SALES grain = one **order line**
+- `order_id` is an order-**header** attribute — not a measure
+- Everything a `DIM_ORDER` would hold is **already a dimension**
+- What's left is just the **identifier**
+
+## Why keep it
+
+- **Groups the lines of one order** — market-basket analysis
+- **Audit trail** back to the source system
+
+## Spotting one
+
+- An **operational id** (order / invoice / ticket #) with **no attributes** of its own

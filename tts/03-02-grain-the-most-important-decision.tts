@@ -1,0 +1,11 @@
+Grain — the most important decision.
+
+Before you choose a single measure or dimension, you answer one question: what does one row of this fact table represent? That answer is the grain — the level of detail — and it is the most consequential decision in all of dimensional modeling. Every other choice flows from it.
+
+Kimball's rule is blunt: declare the grain first, and declare it in business terms. Not one row per day, but one row per product per order — a sentence a business person would actually recognise.
+
+Why does it dominate everything? Because once the grain is fixed, two things follow automatically. The dimensions — the grain names them; one order line means every row can carry a date, a customer, a product, a channel. And the measures — only numbers that are true at that grain belong on the fact. Quantity and line total make sense per order line. An order-level shipping charge does not — it belongs to a coarser grain.
+
+Here's the key instinct: prefer the finest grain. Choose the lowest, most atomic level the source data supports — usually one row per transaction line. Fine grain isn't wasteful, it's flexible. From atomic order lines you can roll up to daily, monthly, per-region, per-category — any summary the business will ever ask for. But you can never roll down. If you store only daily totals, the individual sales are gone forever, and the questions you didn't anticipate can't be answered.
+
+And the cardinal sin: mixing grain. Every row must mean the same thing. If your sales fact holds order lines on some rows and order totals on others, every sum double-counts, and no one can trust a number. One fact table, one grain. Need a different level of detail? That's a separate fact table — not extra rows in this one. If you can't state the grain in one sentence, you don't yet understand the process you're modeling.

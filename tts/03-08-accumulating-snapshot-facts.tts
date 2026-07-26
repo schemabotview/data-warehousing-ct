@@ -1,0 +1,11 @@
+Accumulating snapshot facts.
+
+The first two fact types never change a row once it's written. The accumulating snapshot is the exception. It's built for a process with a defined lifecycle, and its rows are updated in place as an item moves through the milestones.
+
+An accumulating snapshot has one row per tracked item — an order, a claim, a loan application — and a column for each milestone date in the pipeline. The row is born when the process starts, with the later dates left null, and each milestone fills in its date as it's reached.
+
+Jabra's order fulfilment is the natural example: order, packed, shipped, delivered. Order O-one has been placed on the tenth, packed on the eleventh, shipped on the twelfth, delivered on the fourteenth — a completed journey. Order O-two was placed and packed on the thirteenth, but not yet shipped — its later dates are still null, waiting to be updated.
+
+The point of this type is elapsed time. Between the milestone dates you compute lag measures — days to pack, days to ship, days to deliver — and you watch them as service-level metrics. Days-to-deliver in the Jabra shipment fact is exactly this kind of derived duration.
+
+So what makes it different? It updates — it's the only fact type whose existing rows are revisited and rewritten; transactional and snapshot facts are insert-only. Its grain is one lifecycle, not one event or one period. And it's best for pipelines with a known, finite set of steps — fulfilment, claims, admissions, hiring. Reach for an accumulating snapshot when you want to measure a process end to end: one row per item, milestone dates filling in over time, and lag measures between them.

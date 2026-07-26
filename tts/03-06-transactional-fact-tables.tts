@@ -1,0 +1,9 @@
+Transactional fact tables.
+
+Fact tables come in a few recognisable shapes, distinguished by when and how their rows are recorded. The first — and by far the most common — is the transactional fact table.
+
+A transactional fact records one row per transaction, at the moment it happens. FACT SALES is exactly this: one row per order line, written when the line is sold. One ATM withdrawal, one website click, one phone call, one payment — each is a row. This is the finest, most atomic grain there is, and it's why transactional facts are the workhorse of the warehouse.
+
+Two properties define them. First, they're insert-only — rows are never updated. The event happened; its record is immutable. Second, they map one-to-one with the source. If two hundred and forty orders land across Tuesday to Thursday in the source system, the warehouse fact gains exactly two hundred and forty rows — eighty, seventy, ninety. Source transactions and fact rows move together.
+
+And because the grain is atomic and the measures are usually additive — quantity, line total — a transactional fact rolls up to any summary the business asks for: by day, by product, by region. All while still holding every individual event, for the questions no one has asked yet. That flexibility is the reason you default to a transactional fact, and only add the other fact types when a specific need appears. Transactional means one immutable row per event, at the lowest grain — the default fact table. The other types exist to solve the problems this one can't.

@@ -1,0 +1,20 @@
+# Transactional fact tables
+
+## One row per **event**
+
+- Written the moment it happens — one order line, one click, one payment
+- The **finest, most atomic** grain — the warehouse workhorse
+
+## Insert-only, 1:1 with the source
+
+- Rows are **never updated** — the event is immutable
+- 240 source orders → **240** fact rows
+
+## Mostly additive → endlessly flexible
+
+- `quantity`, `line_total` roll up to **any** summary
+- Keeps **every event** for questions not yet asked
+
+## The default
+
+- Reach for other fact types only when a **specific need** appears

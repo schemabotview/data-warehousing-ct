@@ -1,0 +1,25 @@
+# Accumulating snapshot facts
+
+## One row per **lifecycle**, updated in place
+
+- A column for **each milestone date** in the pipeline
+- Row born at start with later dates **NULL**; each step fills its date
+
+## Order fulfilment
+
+```
+order_id order_dt packed_dt shipped_dt delivered_dt
+O001     10-Jan   11-Jan    12-Jan     14-Jan
+O002     13-Jan   13-Jan    NULL       NULL
+```
+- `Order → Packed → Shipped → Delivered`
+
+## Measures = the **lags**
+
+- Days to pack / ship / deliver — **SLA** metrics
+- Jabra `FACT_SHIPMENT.days_to_deliver`
+
+## What's unique
+
+- The **only** fact type whose rows are **updated**
+- Best for pipelines with a **known, finite** set of steps

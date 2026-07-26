@@ -1,0 +1,27 @@
+# The fact table — the heart of the warehouse
+
+## Two kinds of column
+
+- **Foreign keys** — pointers to dimensions: *who, what, when, where*
+- **Measures** — the numbers you aggregate: `quantity`, `line_total`
+
+## FACT_SALES — one row = one order line
+
+```
+date_key  customer_key product_key | quantity line_total
+20260112    1101         204        |    2       1,200
+20260112    1120         207        |    1         300
+```
+- Keys = **context** · measures = **numbers**
+
+## What defines it
+
+- **Numeric & additive** measures
+- Fixed **grain** — every row means the *same* thing
+- A **foreign key to every dimension**
+- **Long & narrow** — the biggest, fastest-growing table
+
+## Fact vs dimension
+
+- Dimensions = **nouns** (customer, product, date)
+- Facts = **verbs + numbers** (what happened, how much)

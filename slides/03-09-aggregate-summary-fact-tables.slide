@@ -1,0 +1,24 @@
+# Aggregate (summary) fact tables
+
+## Pre-computed roll-ups
+
+- Atomic FACT_SALES → **coarser grain**, built by ETL
+- Same **additive** measures, `SUM`-med up a level
+
+## Monthly sales by product line
+
+```
+month   product_line total_sales
+2026-01 Headsets     345,000
+2026-01 Earbuds      210,000
+```
+
+## Why — speed & cost
+
+- Read **thousands** of rows, not hundreds of millions (often 100×)
+- Cheaper scans on cloud / MPP
+
+## The duty
+
+- A **derived copy** — ETL must keep it **consistent** (stale = wrong)
+- Answers only **at its grain** — keep the **atomic fact** as source of truth

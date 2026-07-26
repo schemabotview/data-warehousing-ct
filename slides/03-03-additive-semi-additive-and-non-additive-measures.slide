@@ -1,0 +1,20 @@
+# Additive · semi-additive · non-additive
+
+## Additive — sum across **everything**
+
+- `line_total`, `quantity`, `tax_amount`
+- Any `GROUP BY` works — what facts are *for*
+
+## Semi-additive — sum across all **but time**
+
+- Balances & snapshot levels: `on_hand_quantity`
+- Across dates you **average** or take last — never sum
+
+## Non-additive — **never** sum
+
+- Ratios & rates: `unit_price`, margin %
+- Store the **components**; compute the ratio *after* aggregating
+
+## Rule of thumb
+
+- Keep **raw amounts** on the fact; derive ratios last

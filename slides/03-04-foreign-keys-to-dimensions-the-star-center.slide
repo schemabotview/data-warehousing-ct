@@ -1,0 +1,22 @@
+# Foreign keys — the star center
+
+## One FK per dimension
+
+- `order_date_key`, `customer_key`, `product_key`, `channel_key`, `promotion_key`
+- Each points at a dimension's **surrogate PK**
+- Fact stores the **key**, never the descriptive text
+
+## Every BI query is a star-join
+
+```sql
+SELECT p.product_line, SUM(f.line_total)
+FROM   fact_sales f
+JOIN   dim_product p ON f.product_key = p.product_key
+GROUP BY p.product_line
+```
+- Measures from the **centre**, labels & filters from the **points**
+
+## Why narrow integer keys
+
+- **Fast joins** · **small storage**
+- **Absorb dimension change** (SCD) without touching the fact

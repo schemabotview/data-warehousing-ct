@@ -1,0 +1,21 @@
+# Grain — what one row means
+
+## Declare it first, in business terms
+
+- Not "one row per day" — **"one row per product per order"**
+- The **most important** decision; everything else follows
+
+## The grain fixes the rest
+
+- **Dimensions** — anything true at that detail can attach
+- **Measures** — only numbers true *at that grain* belong
+
+## Prefer the finest grain
+
+- Atomic rows **roll up** to any summary
+- You can never **roll down** — lost detail is gone forever
+
+## The cardinal sin
+
+- **Never mix grain** — every row means the *same* thing
+- A different level = a **separate** fact table

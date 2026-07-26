@@ -1,0 +1,27 @@
+# Factless fact tables
+
+## All keys, **no measures**
+
+- The row's **existence** is the fact
+- Metric = `COUNT(*)`
+
+## Event tracking
+
+```
+student_key class_key date_key
+S27         C4        01-Feb
+```
+- "How many attended C4?" = **count the rows**
+
+## Coverage — what was **possible**
+
+```
+product_key promotion_key date_key
+204         DIWALI        01-Nov
+```
+- Which products were **on promotion** — sold or not
+- Join vs FACT_SALES → promoted products that **never sold**
+
+## Where it earns its place
+
+- Counting events · analysing **absence** · **audit** & compliance

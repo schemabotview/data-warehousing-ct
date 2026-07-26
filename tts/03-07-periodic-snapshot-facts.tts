@@ -1,0 +1,9 @@
+Periodic snapshot facts.
+
+A transactional fact captures events as they happen. But some questions aren't about events — they're about state. How much stock is on hand? What's the account balance? How many subscribers do we have? For those, you take a periodic snapshot — a photograph of a state, at regular intervals.
+
+A periodic snapshot fact records the state of something at the end of every period — every day, week, or month — whether or not anything changed. Jabra's inventory snapshot is the classic case: its grain is one row per product per warehouse per day, capturing on-hand quantity, reserved quantity, and inventory value. You don't reconstruct that from transactions at query time — you materialise the level each period, so stock on the first of February is a single fast lookup.
+
+Now, the catch that defines this type: snapshot measures are semi-additive. Add on-hand quantity across all warehouses on one day, fine — that's total stock. But add the same product's stock across every day of the month, and it's nonsense; you've counted the same units over and over. Across time, you average, or take the last value — you never sum. Snapshots are the very reason the semi-additive class exists.
+
+So how does it differ from a transactional fact? The grain is per period, not per event — coarser. It's dense: there's a row for every entity every period, even a quiet one — stock unchanged still gets a row. And it answers a different question: transactional asks what happened; a snapshot asks what was the level, what was the balance. Reach for a periodic snapshot when the business tracks a level over time — inventory, balances, headcount — and always remember its measures don't sum across dates.

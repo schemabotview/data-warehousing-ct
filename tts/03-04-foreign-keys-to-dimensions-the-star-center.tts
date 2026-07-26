@@ -1,0 +1,9 @@
+Foreign keys to dimensions — the star centre.
+
+Strip the measures off a fact row, and what's left is a bundle of foreign keys — one pointer per dimension. Those keys are what make the fact the centre of the star. Each key is a spoke reaching out to a dimension table, and the fact sits in the middle, holding them all together.
+
+FACT SALES carries an order-date key, a customer key, a product key, a channel key, a promotion key — a slim integer for every dimension that describes a sale. Each one references the surrogate primary key of its dimension: the customer key points at DIM CUSTOMER's customer key, the product key at DIM PRODUCT's product key, and so on. The fact stores only the key, never the descriptive text. The customer's name and city live once, in the dimension — not repeated across millions of fact rows.
+
+And this shapes every BI query. Join the fact to the dimensions on those keys, filter and group by dimension attributes, and aggregate the measures. Sales by product line for twenty twenty-six: join fact sales to dim product and dim date, filter the year, group by product line, sum the line total. The measures come from the centre; the labels and filters come from the points. That one star-join pattern answers almost every analytical question — which is exactly why the schema is shaped this way.
+
+Why surrogate integer keys, and not natural business codes? Three reasons. Joins are fast — integer comparisons are the cheapest join there is, and this table is huge. Storage is small — a four-byte key beats a repeated string on every one of millions of rows. And they absorb change — because the fact points at a surrogate, a dimension can track its history over time without the fact ever having to change. The fact's foreign keys are the star: keep them surrogate, keep them not-null, and every dimension is one join away.
