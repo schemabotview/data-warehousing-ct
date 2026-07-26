@@ -1,0 +1,775 @@
+{
+  "concept": "Data Warehousing",
+  "modules": [
+    {
+      "id": "01-warehouse-foundations",
+      "title": "Warehouse Foundations",
+      "sections": [
+        {
+          "heading": "Why a data warehouse exists",
+          "notebook": "notebooks/01-01-why-a-data-warehouse-exists.ipynb",
+          "slide": "slides/01-01-why-a-data-warehouse-exists.slide",
+          "scene": "dw-architecture",
+          "spine": true,
+          "role": "hook"
+        },
+        {
+          "heading": "What a data warehouse is",
+          "notebook": "notebooks/01-02-what-a-data-warehouse-is.ipynb",
+          "slide": "slides/01-02-what-a-data-warehouse-is.slide",
+          "scene": "dw-architecture",
+          "spine": true
+        },
+        {
+          "heading": "OLTP vs OLAP \u2014 the two workloads",
+          "notebook": "notebooks/01-03-oltp-vs-olap-the-two-workloads.ipynb",
+          "slide": "slides/01-03-oltp-vs-olap-the-two-workloads.slide",
+          "scene": "dw-architecture",
+          "spine": true
+        },
+        {
+          "heading": "Warehouse components \u2014 sources, ETL, storage, marts, BI",
+          "notebook": "notebooks/01-04-warehouse-components-sources-etl-storage-marts-bi.ipynb",
+          "slide": "slides/01-04-warehouse-components-sources-etl-storage-marts-bi.slide",
+          "scene": "dw-architecture",
+          "spine": true
+        },
+        {
+          "heading": "Data marts \u2014 departmental subsets",
+          "notebook": "notebooks/01-05-data-marts-departmental-subsets.ipynb",
+          "slide": "slides/01-05-data-marts-departmental-subsets.slide",
+          "scene": "dw-architecture",
+          "spine": true
+        },
+        {
+          "heading": "Warehouse vs data lake",
+          "notebook": "notebooks/01-06-warehouse-vs-data-lake.ipynb",
+          "slide": "slides/01-06-warehouse-vs-data-lake.slide",
+          "scene": "dw-architecture",
+          "spine": true
+        },
+        {
+          "heading": "Schema-on-write vs schema-on-read",
+          "notebook": "notebooks/01-07-schema-on-write-vs-schema-on-read.ipynb",
+          "slide": "slides/01-07-schema-on-write-vs-schema-on-read.slide",
+          "scene": "dw-architecture",
+          "spine": true
+        },
+        {
+          "heading": "The lakehouse \u2014 where the two converge",
+          "notebook": "notebooks/01-08-the-lakehouse-where-the-two-converge.ipynb",
+          "slide": "slides/01-08-the-lakehouse-where-the-two-converge.slide",
+          "scene": "dw-architecture",
+          "spine": true
+        },
+        {
+          "heading": "Inmon vs Kimball \u2014 top-down vs bottom-up",
+          "notebook": "notebooks/01-09-inmon-vs-kimball-top-down-vs-bottom-up.ipynb",
+          "slide": "slides/01-09-inmon-vs-kimball-top-down-vs-bottom-up.slide",
+          "scene": "dw-architecture",
+          "spine": true
+        },
+        {
+          "heading": "The modeling journey \u2014 conceptual, logical, physical",
+          "notebook": "notebooks/01-10-the-modeling-journey-conceptual-logical-physical.ipynb",
+          "slide": "slides/01-10-the-modeling-journey-conceptual-logical-physical.slide",
+          "scene": "dw-architecture",
+          "spine": true
+        }
+      ]
+    },
+    {
+      "id": "02-normalization-and-keys",
+      "title": "Normalization & Keys",
+      "sections": [
+        {
+          "heading": "Normalization \u2014 why we split tables",
+          "notebook": "notebooks/02-01-normalization-why-we-split-tables.ipynb",
+          "slide": "slides/02-01-normalization-why-we-split-tables.slide",
+          "scene": "star-schema",
+          "spine": true,
+          "role": "hook"
+        },
+        {
+          "heading": "The normal forms \u2014 1NF, 2NF, 3NF",
+          "notebook": "notebooks/02-02-the-normal-forms-1nf-2nf-3nf.ipynb",
+          "slide": "slides/02-02-the-normal-forms-1nf-2nf-3nf.slide",
+          "scene": "star-schema",
+          "spine": true
+        },
+        {
+          "heading": "Splitting to 3NF \u2014 a worked example",
+          "notebook": "notebooks/02-03-splitting-to-3nf-a-worked-example.ipynb",
+          "slide": "slides/02-03-splitting-to-3nf-a-worked-example.slide",
+          "scene": "star-schema",
+          "spine": true
+        },
+        {
+          "heading": "Denormalization \u2014 trading redundancy for speed",
+          "notebook": "notebooks/02-04-denormalization-trading-redundancy-for-speed.ipynb",
+          "slide": "slides/02-04-denormalization-trading-redundancy-for-speed.slide",
+          "scene": "star-schema",
+          "spine": true
+        },
+        {
+          "heading": "Keys \u2014 super, candidate, primary, alternate",
+          "notebook": "notebooks/02-05-keys-super-candidate-primary-alternate.ipynb",
+          "slide": "slides/02-05-keys-super-candidate-primary-alternate.slide",
+          "scene": "star-schema",
+          "spine": true
+        },
+        {
+          "heading": "Composite keys",
+          "notebook": "notebooks/02-06-composite-keys.ipynb",
+          "slide": "slides/02-06-composite-keys.slide",
+          "scene": "star-schema",
+          "spine": true
+        },
+        {
+          "heading": "Foreign keys & referential integrity",
+          "notebook": "notebooks/02-07-foreign-keys-and-referential-integrity.ipynb",
+          "slide": "slides/02-07-foreign-keys-and-referential-integrity.slide",
+          "scene": "star-schema",
+          "spine": true
+        },
+        {
+          "heading": "Strong vs weak entities",
+          "notebook": "notebooks/02-08-strong-vs-weak-entities.ipynb",
+          "slide": "slides/02-08-strong-vs-weak-entities.slide",
+          "scene": "star-schema",
+          "spine": true
+        },
+        {
+          "heading": "Natural key vs surrogate key",
+          "notebook": "notebooks/02-09-natural-key-vs-surrogate-key.ipynb",
+          "slide": "slides/02-09-natural-key-vs-surrogate-key.slide",
+          "scene": "star-schema",
+          "spine": true
+        },
+        {
+          "heading": "Why warehouses prefer surrogate keys",
+          "notebook": "notebooks/02-10-why-warehouses-prefer-surrogate-keys.ipynb",
+          "slide": "slides/02-10-why-warehouses-prefer-surrogate-keys.slide",
+          "scene": "star-schema",
+          "spine": true
+        }
+      ]
+    },
+    {
+      "id": "03-fact-tables",
+      "title": "Fact Tables",
+      "sections": [
+        {
+          "heading": "What a fact table is \u2014 measures & grain",
+          "notebook": "notebooks/03-01-what-a-fact-table-is-measures-and-grain.ipynb",
+          "slide": "slides/03-01-what-a-fact-table-is-measures-and-grain.slide",
+          "scene": "star-schema",
+          "spine": true,
+          "role": "hook"
+        },
+        {
+          "heading": "Grain \u2014 the most important decision",
+          "notebook": "notebooks/03-02-grain-the-most-important-decision.ipynb",
+          "slide": "slides/03-02-grain-the-most-important-decision.slide",
+          "scene": "star-schema",
+          "spine": true
+        },
+        {
+          "heading": "Additive, semi-additive & non-additive measures",
+          "notebook": "notebooks/03-03-additive-semi-additive-and-non-additive-measures.ipynb",
+          "slide": "slides/03-03-additive-semi-additive-and-non-additive-measures.slide",
+          "scene": "star-schema",
+          "spine": true
+        },
+        {
+          "heading": "Foreign keys to dimensions \u2014 the star center",
+          "notebook": "notebooks/03-04-foreign-keys-to-dimensions-the-star-center.ipynb",
+          "slide": "slides/03-04-foreign-keys-to-dimensions-the-star-center.slide",
+          "scene": "star-schema",
+          "spine": true
+        },
+        {
+          "heading": "Degenerate dimensions",
+          "notebook": "notebooks/03-05-degenerate-dimensions.ipynb",
+          "slide": "slides/03-05-degenerate-dimensions.slide",
+          "scene": "star-schema",
+          "spine": true
+        },
+        {
+          "heading": "Transactional fact tables",
+          "notebook": "notebooks/03-06-transactional-fact-tables.ipynb",
+          "slide": "slides/03-06-transactional-fact-tables.slide",
+          "scene": "star-schema",
+          "spine": true
+        },
+        {
+          "heading": "Periodic snapshot facts",
+          "notebook": "notebooks/03-07-periodic-snapshot-facts.ipynb",
+          "slide": "slides/03-07-periodic-snapshot-facts.slide",
+          "scene": "star-schema",
+          "spine": true
+        },
+        {
+          "heading": "Accumulating snapshot facts",
+          "notebook": "notebooks/03-08-accumulating-snapshot-facts.ipynb",
+          "slide": "slides/03-08-accumulating-snapshot-facts.slide",
+          "scene": "star-schema",
+          "spine": true
+        },
+        {
+          "heading": "Aggregate (summary) fact tables",
+          "notebook": "notebooks/03-09-aggregate-summary-fact-tables.ipynb",
+          "slide": "slides/03-09-aggregate-summary-fact-tables.slide",
+          "scene": "star-schema",
+          "spine": true
+        },
+        {
+          "heading": "Factless fact tables \u2014 events & coverage",
+          "notebook": "notebooks/03-10-factless-fact-tables-events-and-coverage.ipynb",
+          "slide": "slides/03-10-factless-fact-tables-events-and-coverage.slide",
+          "scene": "star-schema",
+          "spine": true
+        }
+      ]
+    },
+    {
+      "id": "04-dimension-tables",
+      "title": "Dimension Tables",
+      "sections": [
+        {
+          "heading": "What a dimension is \u2014 the context you slice by",
+          "notebook": "notebooks/04-01-what-a-dimension-is-the-context-you-slice-by.ipynb",
+          "slide": "slides/04-01-what-a-dimension-is-the-context-you-slice-by.slide",
+          "scene": "star-schema",
+          "spine": true,
+          "role": "hook"
+        },
+        {
+          "heading": "Attributes & hierarchies",
+          "notebook": "notebooks/04-02-attributes-and-hierarchies.ipynb",
+          "slide": "slides/04-02-attributes-and-hierarchies.slide",
+          "scene": "star-schema",
+          "spine": true
+        },
+        {
+          "heading": "Surrogate keys in dimensions",
+          "notebook": "notebooks/04-03-surrogate-keys-in-dimensions.ipynb",
+          "slide": "slides/04-03-surrogate-keys-in-dimensions.slide",
+          "scene": "star-schema",
+          "spine": true
+        },
+        {
+          "heading": "Conformed dimensions & the bus matrix",
+          "notebook": "notebooks/04-04-conformed-dimensions-and-the-bus-matrix.ipynb",
+          "slide": "slides/04-04-conformed-dimensions-and-the-bus-matrix.slide",
+          "scene": "star-schema",
+          "spine": true
+        },
+        {
+          "heading": "Role-playing dimensions",
+          "notebook": "notebooks/04-05-role-playing-dimensions.ipynb",
+          "slide": "slides/04-05-role-playing-dimensions.slide",
+          "scene": "star-schema",
+          "spine": true
+        },
+        {
+          "heading": "Junk dimensions",
+          "notebook": "notebooks/04-06-junk-dimensions.ipynb",
+          "slide": "slides/04-06-junk-dimensions.slide",
+          "scene": "star-schema",
+          "spine": true
+        },
+        {
+          "heading": "Degenerate dimensions revisited",
+          "notebook": "notebooks/04-07-degenerate-dimensions-revisited.ipynb",
+          "slide": "slides/04-07-degenerate-dimensions-revisited.slide",
+          "scene": "star-schema",
+          "spine": true
+        },
+        {
+          "heading": "The date dimension \u2014 the universal dimension",
+          "notebook": "notebooks/04-08-the-date-dimension-the-universal-dimension.ipynb",
+          "slide": "slides/04-08-the-date-dimension-the-universal-dimension.slide",
+          "scene": "star-schema",
+          "spine": true
+        },
+        {
+          "heading": "Fact vs dimension \u2014 the two building blocks",
+          "notebook": "notebooks/04-09-fact-vs-dimension-the-two-building-blocks.ipynb",
+          "slide": "slides/04-09-fact-vs-dimension-the-two-building-blocks.slide",
+          "scene": "star-schema",
+          "spine": true
+        },
+        {
+          "heading": "Common dimension design pitfalls",
+          "notebook": "notebooks/04-10-common-dimension-design-pitfalls.ipynb",
+          "slide": "slides/04-10-common-dimension-design-pitfalls.slide",
+          "scene": "star-schema",
+          "spine": true
+        }
+      ]
+    },
+    {
+      "id": "05-star-and-snowflake-schemas",
+      "title": "Star & Snowflake Schemas",
+      "sections": [
+        {
+          "heading": "The star schema",
+          "notebook": "notebooks/05-01-the-star-schema.ipynb",
+          "slide": "slides/05-01-the-star-schema.slide",
+          "scene": "star-schema",
+          "spine": true,
+          "role": "hook"
+        },
+        {
+          "heading": "Anatomy of a star \u2014 fact + dimensions",
+          "notebook": "notebooks/05-02-anatomy-of-a-star-fact-dimensions.ipynb",
+          "slide": "slides/05-02-anatomy-of-a-star-fact-dimensions.slide",
+          "scene": "star-schema",
+          "spine": true
+        },
+        {
+          "heading": "Why denormalized dimensions win for BI",
+          "notebook": "notebooks/05-03-why-denormalized-dimensions-win-for-bi.ipynb",
+          "slide": "slides/05-03-why-denormalized-dimensions-win-for-bi.slide",
+          "scene": "star-schema",
+          "spine": true
+        },
+        {
+          "heading": "The snowflake schema",
+          "notebook": "notebooks/05-04-the-snowflake-schema.ipynb",
+          "slide": "slides/05-04-the-snowflake-schema.slide",
+          "scene": "star-schema",
+          "spine": true
+        },
+        {
+          "heading": "Star vs snowflake \u2014 the trade-off",
+          "notebook": "notebooks/05-05-star-vs-snowflake-the-trade-off.ipynb",
+          "slide": "slides/05-05-star-vs-snowflake-the-trade-off.slide",
+          "scene": "star-schema",
+          "spine": true
+        },
+        {
+          "heading": "Galaxy / fact-constellation schemas",
+          "notebook": "notebooks/05-06-galaxy-fact-constellation-schemas.ipynb",
+          "slide": "slides/05-06-galaxy-fact-constellation-schemas.slide",
+          "scene": "star-schema",
+          "spine": true
+        },
+        {
+          "heading": "Physical design \u2014 a Sales star walkthrough",
+          "notebook": "notebooks/05-07-physical-design-a-sales-star-walkthrough.ipynb",
+          "slide": "slides/05-07-physical-design-a-sales-star-walkthrough.slide",
+          "scene": "star-schema",
+          "spine": true
+        },
+        {
+          "heading": "Keys in the physical model \u2014 PK, SK, FK, NK",
+          "notebook": "notebooks/05-08-keys-in-the-physical-model-pk-sk-fk-nk.ipynb",
+          "slide": "slides/05-08-keys-in-the-physical-model-pk-sk-fk-nk.slide",
+          "scene": "star-schema",
+          "spine": true
+        },
+        {
+          "heading": "Degenerate & derived columns in the fact",
+          "notebook": "notebooks/05-09-degenerate-and-derived-columns-in-the-fact.ipynb",
+          "slide": "slides/05-09-degenerate-and-derived-columns-in-the-fact.slide",
+          "scene": "star-schema",
+          "spine": true
+        },
+        {
+          "heading": "Choosing a schema for your workload",
+          "notebook": "notebooks/05-10-choosing-a-schema-for-your-workload.ipynb",
+          "slide": "slides/05-10-choosing-a-schema-for-your-workload.slide",
+          "scene": "star-schema",
+          "spine": true
+        }
+      ]
+    },
+    {
+      "id": "06-slowly-changing-dimensions",
+      "title": "Slowly Changing Dimensions",
+      "sections": [
+        {
+          "heading": "The problem \u2014 dimensions change over time",
+          "notebook": "notebooks/06-01-the-problem-dimensions-change-over-time.ipynb",
+          "slide": "slides/06-01-the-problem-dimensions-change-over-time.slide",
+          "scene": "star-schema",
+          "spine": true,
+          "role": "hook"
+        },
+        {
+          "heading": "Type 0 \u2014 retain original",
+          "notebook": "notebooks/06-02-type-0-retain-original.ipynb",
+          "slide": "slides/06-02-type-0-retain-original.slide",
+          "scene": "star-schema",
+          "spine": true
+        },
+        {
+          "heading": "Type 1 \u2014 overwrite (no history)",
+          "notebook": "notebooks/06-03-type-1-overwrite-no-history.ipynb",
+          "slide": "slides/06-03-type-1-overwrite-no-history.slide",
+          "scene": "star-schema",
+          "spine": true
+        },
+        {
+          "heading": "Type 2 \u2014 add a row (full history)",
+          "notebook": "notebooks/06-04-type-2-add-a-row-full-history.ipynb",
+          "slide": "slides/06-04-type-2-add-a-row-full-history.slide",
+          "scene": "star-schema",
+          "spine": true
+        },
+        {
+          "heading": "Effective dates & the active flag",
+          "notebook": "notebooks/06-05-effective-dates-and-the-active-flag.ipynb",
+          "slide": "slides/06-05-effective-dates-and-the-active-flag.slide",
+          "scene": "star-schema",
+          "spine": true
+        },
+        {
+          "heading": "Type 3 \u2014 add a column (limited history)",
+          "notebook": "notebooks/06-06-type-3-add-a-column-limited-history.ipynb",
+          "slide": "slides/06-06-type-3-add-a-column-limited-history.slide",
+          "scene": "star-schema",
+          "spine": true
+        },
+        {
+          "heading": "Type 4 \u2014 history / mini-dimension tables",
+          "notebook": "notebooks/06-07-type-4-history-mini-dimension-tables.ipynb",
+          "slide": "slides/06-07-type-4-history-mini-dimension-tables.slide",
+          "scene": "star-schema",
+          "spine": true
+        },
+        {
+          "heading": "Type 6 \u2014 the hybrid (1 + 2 + 3)",
+          "notebook": "notebooks/06-08-type-6-the-hybrid-1-2-3.ipynb",
+          "slide": "slides/06-08-type-6-the-hybrid-1-2-3.slide",
+          "scene": "star-schema",
+          "spine": true
+        },
+        {
+          "heading": "Choosing an SCD type per attribute",
+          "notebook": "notebooks/06-09-choosing-an-scd-type-per-attribute.ipynb",
+          "slide": "slides/06-09-choosing-an-scd-type-per-attribute.slide",
+          "scene": "star-schema",
+          "spine": true
+        },
+        {
+          "heading": "Loading an SCD-2 dimension \u2014 the merge pattern",
+          "notebook": "notebooks/06-10-loading-an-scd-2-dimension-the-merge-pattern.ipynb",
+          "slide": "slides/06-10-loading-an-scd-2-dimension-the-merge-pattern.slide",
+          "scene": "star-schema",
+          "spine": true
+        }
+      ]
+    },
+    {
+      "id": "07-data-vault-modeling",
+      "title": "Data Vault Modeling",
+      "sections": [
+        {
+          "heading": "Why Data Vault exists \u2014 agility & auditability",
+          "notebook": "notebooks/07-01-why-data-vault-exists-agility-and-auditability.ipynb",
+          "slide": "slides/07-01-why-data-vault-exists-agility-and-auditability.slide",
+          "scene": "datavault-model",
+          "spine": true,
+          "role": "hook"
+        },
+        {
+          "heading": "The three building blocks \u2014 hubs, links, satellites",
+          "notebook": "notebooks/07-02-the-three-building-blocks-hubs-links-satellites.ipynb",
+          "slide": "slides/07-02-the-three-building-blocks-hubs-links-satellites.slide",
+          "scene": "datavault-model",
+          "spine": true
+        },
+        {
+          "heading": "Hubs \u2014 the business keys",
+          "notebook": "notebooks/07-03-hubs-the-business-keys.ipynb",
+          "slide": "slides/07-03-hubs-the-business-keys.slide",
+          "scene": "datavault-model",
+          "spine": true
+        },
+        {
+          "heading": "Links \u2014 the relationships",
+          "notebook": "notebooks/07-04-links-the-relationships.ipynb",
+          "slide": "slides/07-04-links-the-relationships.slide",
+          "scene": "datavault-model",
+          "spine": true
+        },
+        {
+          "heading": "Satellites \u2014 descriptive history",
+          "notebook": "notebooks/07-05-satellites-descriptive-history.ipynb",
+          "slide": "slides/07-05-satellites-descriptive-history.slide",
+          "scene": "datavault-model",
+          "spine": true
+        },
+        {
+          "heading": "Hash keys & load metadata",
+          "notebook": "notebooks/07-06-hash-keys-and-load-metadata.ipynb",
+          "slide": "slides/07-06-hash-keys-and-load-metadata.slide",
+          "scene": "datavault-model",
+          "spine": true
+        },
+        {
+          "heading": "Raw vault vs business vault",
+          "notebook": "notebooks/07-07-raw-vault-vs-business-vault.ipynb",
+          "slide": "slides/07-07-raw-vault-vs-business-vault.slide",
+          "scene": "datavault-model",
+          "spine": true
+        },
+        {
+          "heading": "Data Vault vs dimensional modeling",
+          "notebook": "notebooks/07-08-data-vault-vs-dimensional-modeling.ipynb",
+          "slide": "slides/07-08-data-vault-vs-dimensional-modeling.slide",
+          "scene": "datavault-model",
+          "spine": true
+        },
+        {
+          "heading": "From Data Vault to star \u2014 the information mart",
+          "notebook": "notebooks/07-09-from-data-vault-to-star-the-information-mart.ipynb",
+          "slide": "slides/07-09-from-data-vault-to-star-the-information-mart.slide",
+          "scene": "datavault-model",
+          "spine": true
+        },
+        {
+          "heading": "When to reach for Data Vault",
+          "notebook": "notebooks/07-10-when-to-reach-for-data-vault.ipynb",
+          "slide": "slides/07-10-when-to-reach-for-data-vault.slide",
+          "scene": "datavault-model",
+          "spine": true
+        }
+      ]
+    },
+    {
+      "id": "08-designing-a-warehouse-model",
+      "title": "Designing a Warehouse Model",
+      "sections": [
+        {
+          "heading": "Kimball's 4-step design process",
+          "notebook": "notebooks/08-01-kimball-s-4-step-design-process.ipynb",
+          "slide": "slides/08-01-kimball-s-4-step-design-process.slide",
+          "scene": "star-schema",
+          "spine": true,
+          "role": "hook"
+        },
+        {
+          "heading": "Step 1 \u2014 pick the business process",
+          "notebook": "notebooks/08-02-step-1-pick-the-business-process.ipynb",
+          "slide": "slides/08-02-step-1-pick-the-business-process.slide",
+          "scene": "star-schema",
+          "spine": true
+        },
+        {
+          "heading": "Step 2 \u2014 declare the grain",
+          "notebook": "notebooks/08-03-step-2-declare-the-grain.ipynb",
+          "slide": "slides/08-03-step-2-declare-the-grain.slide",
+          "scene": "star-schema",
+          "spine": true
+        },
+        {
+          "heading": "Step 3 \u2014 identify the dimensions",
+          "notebook": "notebooks/08-04-step-3-identify-the-dimensions.ipynb",
+          "slide": "slides/08-04-step-3-identify-the-dimensions.slide",
+          "scene": "star-schema",
+          "spine": true
+        },
+        {
+          "heading": "Step 4 \u2014 identify the facts",
+          "notebook": "notebooks/08-05-step-4-identify-the-facts.ipynb",
+          "slide": "slides/08-05-step-4-identify-the-facts.slide",
+          "scene": "star-schema",
+          "spine": true
+        },
+        {
+          "heading": "Worked example \u2014 modeling from a bill",
+          "notebook": "notebooks/08-06-worked-example-modeling-from-a-bill.ipynb",
+          "slide": "slides/08-06-worked-example-modeling-from-a-bill.slide",
+          "scene": "star-schema",
+          "spine": true
+        },
+        {
+          "heading": "Building the dimensions with surrogate keys",
+          "notebook": "notebooks/08-07-building-the-dimensions-with-surrogate-keys.ipynb",
+          "slide": "slides/08-07-building-the-dimensions-with-surrogate-keys.slide",
+          "scene": "star-schema",
+          "spine": true
+        },
+        {
+          "heading": "Building the order fact",
+          "notebook": "notebooks/08-08-building-the-order-fact.ipynb",
+          "slide": "slides/08-08-building-the-order-fact.slide",
+          "scene": "star-schema",
+          "spine": true
+        },
+        {
+          "heading": "The resulting star \u2014 end to end",
+          "notebook": "notebooks/08-09-the-resulting-star-end-to-end.ipynb",
+          "slide": "slides/08-09-the-resulting-star-end-to-end.slide",
+          "scene": "star-schema",
+          "spine": true
+        },
+        {
+          "heading": "Reading the model as DBML",
+          "notebook": "notebooks/08-10-reading-the-model-as-dbml.ipynb",
+          "slide": "slides/08-10-reading-the-model-as-dbml.slide",
+          "scene": "star-schema",
+          "spine": true
+        }
+      ]
+    },
+    {
+      "id": "09-loading-the-warehouse-etl-elt",
+      "title": "Loading the Warehouse \u2014 ETL & ELT",
+      "sections": [
+        {
+          "heading": "ETL vs ELT",
+          "notebook": "notebooks/09-01-etl-vs-elt.ipynb",
+          "slide": "slides/09-01-etl-vs-elt.slide",
+          "scene": "dw-architecture",
+          "spine": true,
+          "role": "hook"
+        },
+        {
+          "heading": "Extract \u2014 pulling from source systems",
+          "notebook": "notebooks/09-02-extract-pulling-from-source-systems.ipynb",
+          "slide": "slides/09-02-extract-pulling-from-source-systems.slide",
+          "scene": "dw-architecture",
+          "spine": true
+        },
+        {
+          "heading": "Staging areas",
+          "notebook": "notebooks/09-03-staging-areas.ipynb",
+          "slide": "slides/09-03-staging-areas.slide",
+          "scene": "dw-architecture",
+          "spine": true
+        },
+        {
+          "heading": "Transform \u2014 cleaning, conforming, deduping",
+          "notebook": "notebooks/09-04-transform-cleaning-conforming-deduping.ipynb",
+          "slide": "slides/09-04-transform-cleaning-conforming-deduping.slide",
+          "scene": "dw-architecture",
+          "spine": true
+        },
+        {
+          "heading": "Load \u2014 full vs incremental",
+          "notebook": "notebooks/09-05-load-full-vs-incremental.ipynb",
+          "slide": "slides/09-05-load-full-vs-incremental.slide",
+          "scene": "dw-architecture",
+          "spine": true
+        },
+        {
+          "heading": "Change data capture (CDC)",
+          "notebook": "notebooks/09-06-change-data-capture-cdc.ipynb",
+          "slide": "slides/09-06-change-data-capture-cdc.slide",
+          "scene": "dw-architecture",
+          "spine": true
+        },
+        {
+          "heading": "Surrogate key generation & lookups",
+          "notebook": "notebooks/09-07-surrogate-key-generation-and-lookups.ipynb",
+          "slide": "slides/09-07-surrogate-key-generation-and-lookups.slide",
+          "scene": "dw-architecture",
+          "spine": true
+        },
+        {
+          "heading": "Loading dimensions before facts",
+          "notebook": "notebooks/09-08-loading-dimensions-before-facts.ipynb",
+          "slide": "slides/09-08-loading-dimensions-before-facts.slide",
+          "scene": "dw-architecture",
+          "spine": true
+        },
+        {
+          "heading": "Idempotent & restartable loads",
+          "notebook": "notebooks/09-09-idempotent-and-restartable-loads.ipynb",
+          "slide": "slides/09-09-idempotent-and-restartable-loads.slide",
+          "scene": "dw-architecture",
+          "spine": true
+        },
+        {
+          "heading": "Orchestration & data-quality checks",
+          "notebook": "notebooks/09-10-orchestration-and-data-quality-checks.ipynb",
+          "slide": "slides/09-10-orchestration-and-data-quality-checks.slide",
+          "scene": "dw-architecture",
+          "spine": true
+        }
+      ]
+    },
+    {
+      "id": "10-cloud-data-warehouses-and-mpp",
+      "title": "Cloud Data Warehouses & MPP",
+      "sections": [
+        {
+          "heading": "Why warehouses moved to the cloud",
+          "notebook": "notebooks/10-01-why-warehouses-moved-to-the-cloud.ipynb",
+          "slide": "slides/10-01-why-warehouses-moved-to-the-cloud.slide",
+          "scene": "dw-architecture",
+          "spine": true,
+          "role": "hook"
+        },
+        {
+          "heading": "MPP architecture \u2014 shared-nothing parallelism",
+          "notebook": "notebooks/10-02-mpp-architecture-shared-nothing-parallelism.ipynb",
+          "slide": "slides/10-02-mpp-architecture-shared-nothing-parallelism.slide",
+          "scene": "dw-architecture",
+          "spine": true
+        },
+        {
+          "heading": "Separation of compute & storage",
+          "notebook": "notebooks/10-03-separation-of-compute-and-storage.ipynb",
+          "slide": "slides/10-03-separation-of-compute-and-storage.slide",
+          "scene": "dw-architecture",
+          "spine": true
+        },
+        {
+          "heading": "The platforms \u2014 Snowflake, BigQuery, Redshift, Synapse",
+          "notebook": "notebooks/10-04-the-platforms-snowflake-bigquery-redshift-synapse.ipynb",
+          "slide": "slides/10-04-the-platforms-snowflake-bigquery-redshift-synapse.slide",
+          "scene": "dw-architecture",
+          "spine": true
+        },
+        {
+          "heading": "Data distribution \u2014 distribution & partition keys",
+          "notebook": "notebooks/10-05-data-distribution-distribution-and-partition-keys.ipynb",
+          "slide": "slides/10-05-data-distribution-distribution-and-partition-keys.slide",
+          "scene": "dw-architecture",
+          "spine": true
+        },
+        {
+          "heading": "Columnar storage & compression",
+          "notebook": "notebooks/10-06-columnar-storage-and-compression.ipynb",
+          "slide": "slides/10-06-columnar-storage-and-compression.slide",
+          "scene": "dw-architecture",
+          "spine": true
+        },
+        {
+          "heading": "Clustering, sort keys & micro-partitions / zone maps",
+          "notebook": "notebooks/10-07-clustering-sort-keys-and-micro-partitions-zone-maps.ipynb",
+          "slide": "slides/10-07-clustering-sort-keys-and-micro-partitions-zone-maps.slide",
+          "scene": "dw-architecture",
+          "spine": true
+        },
+        {
+          "heading": "Materialized views & result caching",
+          "notebook": "notebooks/10-08-materialized-views-and-result-caching.ipynb",
+          "slide": "slides/10-08-materialized-views-and-result-caching.slide",
+          "scene": "dw-architecture",
+          "spine": true
+        },
+        {
+          "heading": "Star-schema join optimization & partition pruning",
+          "notebook": "notebooks/10-09-star-schema-join-optimization-and-partition-pruning.ipynb",
+          "slide": "slides/10-09-star-schema-join-optimization-and-partition-pruning.slide",
+          "scene": "dw-architecture",
+          "spine": true
+        },
+        {
+          "heading": "Query best practices \u2014 before -> after case study",
+          "notebook": "notebooks/10-10-query-best-practices-before-after-case-study.ipynb",
+          "slide": "slides/10-10-query-best-practices-before-after-case-study.slide",
+          "scene": "dw-architecture",
+          "spine": true
+        }
+      ]
+    }
+  ]
+}
