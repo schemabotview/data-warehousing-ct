@@ -1,0 +1,22 @@
+# Surrogate keys in dimensions
+
+## Two keys on every dimension
+
+```
+customer_key customer_id name     city   segment
+1101         C-4471      Ana Ruiz Madrid B2C
+```
+- `customer_key` — **surrogate** PK, the fact points at it
+- `customer_id` — **natural** key from the source system
+
+## Why a surrogate
+
+- **Decoupled** from source renumbering & merges
+- **Fast, narrow** integer joins
+- Reserve `0` for the **"Unknown"** member — never a NULL FK
+
+## The crucial one — it enables **history**
+
+- Ana moves Madrid → Barcelona: **two rows**, same `customer_id`, new `customer_key`
+- Each fact points at the version **current at sale time**
+- That's a **Slowly Changing Dimension** — full detail in module 06

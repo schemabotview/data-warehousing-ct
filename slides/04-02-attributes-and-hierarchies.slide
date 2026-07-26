@@ -1,0 +1,22 @@
+# Attributes & hierarchies
+
+## Attributes — the columns you slice by
+
+- `category`, `brand`, `city`, `segment` — each a lever
+- **Filter · group · label** with them
+- **More attributes = richer analysis** — be generous
+
+## Hierarchies — natural roll-up paths
+
+```
+product → category → product_line → brand
+day → month → quarter → year
+city → province → region → country
+```
+- Let a user **drill down** and **roll up** inside one dimension
+
+## Keep it flat (denormalized)
+
+- Whole hierarchy = **flat columns on one table**
+- Every drill path is **one hop** from the fact
+- Splitting into sub-tables = the **snowflake** (module 05)

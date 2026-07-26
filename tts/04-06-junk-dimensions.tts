@@ -1,0 +1,11 @@
+Junk dimensions.
+
+A transactional fact tends to collect a handful of low-cardinality flags — an order status, a payment flag, a gift-wrap indicator, a priority. Left on the fact, each one is a separate column of tiny, repetitive codes, and together they clutter the row. The tidy solution is a junk dimension.
+
+A junk dimension gathers several unrelated, low-cardinality flags and statuses into one small dimension table, and the fact carries a single junk key in their place. So instead of four flag columns sitting on millions of fact rows, the fact holds one key, and the junk table holds the distinct combinations that actually occur. One row might be Shipped, Paid, no gift wrap, Standard priority; another Shipped, Paid, gift-wrapped, Express; another Returned, Refunded, Standard.
+
+And the word junk isn't an insult — it's the useful-but-miscellaneous flags that don't each deserve their own dimension. Ten flags, with a few values each, might combine into only a few hundred real rows — because most theoretical combinations never actually happen. You only store the ones that do.
+
+Why bother? Three payoffs. It keeps the fact narrow — one key, instead of many flag columns on a huge table. It gives the flags a home — now they can be grouped, filtered, and labelled like any other dimension attribute. And it tidies the model — a row of loose indicators becomes one clean dimension.
+
+Finally, junk versus its cousins. A junk dimension takes several flags into one small table, and the fact holds a key. A degenerate dimension is an i-d with no attributes at all — so it stays in the fact, with no table; that's the next section. And a conformed dimension is a rich dimension shared across many facts. So when flags pile up on the fact, sweep them into a junk dimension: one key on the fact, one small table of the combinations that occur.

@@ -1,0 +1,26 @@
+# Conformed dimensions & the bus matrix
+
+## One dimension, shared, same meaning
+
+```
+FACT_SALES ────┐
+FACT_SHIPMENT ─┼── DIM_CUSTOMER (conformed)
+FACT_PAYMENTS ─┘
+```
+- Every process rolls up by the **same** region, product_line
+- Line metrics up side by side · **drill across** processes
+
+## The bus matrix — the plan on one page
+
+```
+Process   Date Customer Product Warehouse Carrier
+Sales      ✓     ✓        ✓
+Shipment   ✓     ✓        ✓        ✓         ✓
+Payments   ✓     ✓
+```
+- Rows = **processes** (facts) · columns = **dimensions**
+- A shared **column** = a dimension you must **conform**
+
+## Why it matters
+
+- Conformed dims turn separate marts into **one warehouse**

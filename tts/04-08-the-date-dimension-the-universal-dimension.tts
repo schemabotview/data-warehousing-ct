@@ -1,0 +1,9 @@
+The date dimension — the universal dimension.
+
+Almost every fact has a date, and almost every question has a time filter — this quarter, year over year, weekends only. So one dimension appears in virtually every warehouse and joins to nearly every fact: dim date, the universal dimension.
+
+Its grain is one row per calendar day, and it's populated once, ahead of time, for years into the past and the future. Its surrogate key is a readable year-month-day integer — two-oh-two-six-oh-seven-two-four for the twenty-fourth of July, twenty twenty-six — so the key is both a fast integer join and human-legible. And around it sits a wealth of attributes: the full date, day of week, month name, quarter, year, week of year, is-weekend, is-holiday, fiscal year, fiscal quarter.
+
+Now, you could just call a month or extract function at query time — so why store a whole table? Because a table holds what SQL cannot compute. First, the business calendar: is-holiday, for Spanish national and regional holidays, plus fiscal year and fiscal quarter. No date function knows your fiscal calendar, or which days are holidays. Second, consistent labels: everyone gets the same spelling of month name and quarter, so reports agree with each other. Third, rich, ready attributes: is-weekend, week of year, day and quarter names — so you filter and group without rewriting date logic in every query. And fourth, fast integer joins: the fact joins on a four-byte date key, not a date comparison.
+
+And dim date is the archetype of two patterns we've just seen. It's the archetypal conformed dimension — shared by every fact. And it's the archetypal role-playing dimension — order date, ship date, and delivery date all point here. So build it richly, once, and the entire warehouse speaks the same calendar: one pre-computed row per day, a year-month-day key, and every calendar and fiscal attribute a report could ever ask for.

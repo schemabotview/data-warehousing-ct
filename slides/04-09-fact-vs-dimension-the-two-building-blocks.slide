@@ -1,0 +1,24 @@
+# Fact vs dimension — the two building blocks
+
+## Every star table is one or the other
+
+```
+            Fact                Dimension
+Holds       measures (numbers)  attributes (context)
+Answers     what / how much     who, what, when, where
+Shape       long & narrow       wide & shallow
+Grows       fast, forever       slowly
+Key         FKs to dimensions   surrogate PK
+Used to     aggregate           filter, group, label
+```
+
+## The test — sum it, or slice by it?
+
+- **`SUM` it** → a measure → **fact**
+- **`GROUP BY` it** → an attribute → **dimension**
+
+## A number can be either
+
+- `line_total` on the fact = **measure** (sum it)
+- `list_price` on DIM_PRODUCT = **attribute** (group by it)
+- The **role**, not the type, decides the table

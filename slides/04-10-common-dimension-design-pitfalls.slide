@@ -1,0 +1,16 @@
+# Common dimension design pitfalls
+
+## The traps, and the fixes
+
+- **Too few attributes** → be generous; extra columns are cheap
+- **Cryptic codes** → store **readable labels** (`Returned`, not `RTN`)
+- **No surrogate key** → ties you to the source, **blocks SCD**
+- **NULL foreign keys** → use an **"Unknown" member** (key `0`)
+- **Premature snowflaking** → keep dimensions **flat** (module 05)
+- **Ignoring change** → set an **SCD policy per attribute** (module 06)
+- **Measures in a dimension** → sum it? → it's a **fact**
+
+## The through-line
+
+- Most share one root: the dimension as an **afterthought**
+- Rich · labelled · surrogate-keyed · flat · history-aware

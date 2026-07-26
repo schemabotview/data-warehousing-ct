@@ -1,0 +1,21 @@
+# The dimension — the context you slice by
+
+## Every report is "measure **by** attribute"
+
+- Sales **by product line** · revenue **by month, by region**
+- The measure is the **fact**; the **"by …"** is a **dimension**
+
+## DIM_PRODUCT — descriptive context
+
+```
+product_key product_id name       category product_line
+204         P-88       Evolve2 65 Headset  Headsets
+207         P-91       Elite 8    Earbud   Earbuds
+```
+
+## The signature of a dimension
+
+- **Descriptive & textual** — human-readable labels, not codes
+- **Wide & shallow** — many columns, few rows
+- The things you **filter, group, and label** by
+- **Surrogate primary key** the fact points at

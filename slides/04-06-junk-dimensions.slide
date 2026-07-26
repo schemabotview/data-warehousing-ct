@@ -1,0 +1,24 @@
+# Junk dimensions
+
+## Bundle low-cardinality flags into one table
+
+- Order status, payment flag, gift-wrap, priority
+- Fact carries **one `junk_key`** instead of many flag columns
+
+## The junk table = the combinations that occur
+
+```
+junk_key order_status payment  gift_wrap priority
+1        Shipped      Paid     No        Standard
+2        Shipped      Paid     Yes       Express
+3        Returned     Refunded No        Standard
+```
+- Store only the combos that **actually happen**
+
+## Why bother
+
+- Keeps the **fact narrow** · gives the flags a **home** to group by
+
+## Junk vs cousins
+
+- **Junk** — flags → one small table · **Degenerate** — id, no table · **Conformed** — shared dim

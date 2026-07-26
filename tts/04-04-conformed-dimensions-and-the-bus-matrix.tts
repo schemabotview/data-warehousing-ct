@@ -1,0 +1,9 @@
+Conformed dimensions and the bus matrix.
+
+A warehouse has many fact tables — Jabra has sales, shipments, payments, inventory. Now, if each one had its own customer table, its own date table, you could never compare across them: revenue by region and shipments by region would be using two different definitions of region. The fix is the conformed dimension.
+
+A conformed dimension is a dimension that means exactly the same thing across every fact that uses it — physically the same table, or a consistent copy of it. In the Jabra galaxy, dim date, dim customer, and dim product are conformed — shared by the sales fact, the shipment fact, and the payments fact alike. And because every process rolls up by the same region, the same product line, you can line metrics up side by side — revenue, units shipped, and cash collected, all by region, by month — and even drill across from one process to another. Conformed dimensions are the mechanism that turns separate data marts into one integrated warehouse.
+
+And the plan for all this fits on one page: Kimball's bus matrix. The rows are business processes — the facts. The columns are dimensions. And a mark says this process uses this dimension. So sales uses date, customer, product. Shipment uses those plus warehouse and carrier. Payments uses date and customer. Read down a column and you see which dimensions are shared — those are the ones you must conform. Read across a row and you see a fact's grain in dimensions. The matrix is built up front, before any table exists, so the whole enterprise agrees on a single dim customer, instead of five incompatible ones.
+
+So: conform the shared dimensions, and separate marts snap together into one warehouse. The bus matrix is where you decide, on one page, which dimensions those are.

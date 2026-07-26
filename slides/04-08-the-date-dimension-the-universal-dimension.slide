@@ -1,0 +1,22 @@
+# The date dimension — the universal dimension
+
+## One row per day, pre-built
+
+- Grain = **one calendar day**, populated once, ahead of time
+- Surrogate key = **`YYYYMMDD` integer** — `20260724`
+
+```
+date_key  full_date  month_name quarter year is_holiday
+20260724  2026-07-24 July       3       2026 false
+```
+
+## Why a table, not `MONTH()`
+
+- **Business calendar** — `is_holiday`, `fiscal_year`, `fiscal_quarter`
+- **Consistent labels** — every report agrees on `month_name`
+- **Ready attributes** — `is_weekend`, `week_of_year`, no date logic
+- **Fast integer joins** on a 4-byte key
+
+## Conformed **and** role-playing
+
+- Shared by every fact · `order_date` / `ship_date` / `delivery_date`

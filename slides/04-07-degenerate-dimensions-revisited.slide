@@ -1,0 +1,21 @@
+# Degenerate dimensions revisited
+
+## Seen from the dimension side
+
+- A dimension key in the **fact**, with **no table** of its own
+- `order_id` — every attribute an "order dim" would hold is **already a dimension**
+- What's left is a bare id → it **stays on the fact**
+
+## Still real & useful
+
+- **Groups a transaction's lines** — market-basket analysis
+- **Audit trail** to the source · count distinct orders
+
+## The four special types
+
+```
+Conformed    shared table   rich attributes, reused
+Role-playing one table      same dim, many roles
+Junk         one small tbl  bundled flags
+Degenerate   NO table       just an id, on the fact
+```
