@@ -1,0 +1,18 @@
+# Normalization — why we split tables
+
+## The problem — redundancy
+
+- One wide table repeats **Ann · Delhi** on every order row
+- The same **fact stored in many places** — the copies can drift apart
+
+## Three anomalies
+
+- **Update** — Ann moves; miss one row and she's in two cities
+- **Insertion** — can't add a customer until they place an order
+- **Deletion** — remove her last order, erase that she existed
+
+## The fix — one fact, one place
+
+- **Split** into related tables linked by keys: **orders** + **customers**
+- City lives in **one row** — the anomalies disappear
+- Natural design for **OLTP** — safe writes; cost is **joins on read**

@@ -1,0 +1,24 @@
+# Foreign keys & referential integrity
+
+## The foreign key
+
+- A column that **references the primary key of another table**
+- The pointer that says "this row belongs with *that* row"
+
+```sql
+CREATE TABLE STUDENT (
+  ID INT PRIMARY KEY,
+  DEPT_ID INT,
+  FOREIGN KEY (DEPT_ID) REFERENCES DEPARTMENT(DEPT_ID)
+);
+```
+
+## Referential integrity — the enforced rule
+
+- Every FK value must **exist** in the parent (or be NULL)
+- **No orphan inserts** · **no dangling deletes** — joins can be trusted
+
+## In the warehouse
+
+- A star = **fact FKs → dimension PKs** (`customer_sk`, `product_sk`, `date_sk`)
+- Loads often **don't physically enforce** FKs — **ETL guarantees integrity** via lookups

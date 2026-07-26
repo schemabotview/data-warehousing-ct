@@ -1,0 +1,15 @@
+Keys — super, candidate, primary, and alternate.
+
+Splitting tables only works if each row can be uniquely identified, and if tables can link to one another. That's the job of keys. Four related terms describe how uniqueness narrows down to the one column we build on.
+
+We'll use a student table, with columns: student i-d, email, roll number, department i-d, and name. Several columns can uniquely identify a student — and each plays a different role.
+
+Start with the super key. A super key is any set of columns that uniquely identifies a row. Student i-d alone is a super key. But so is student i-d plus name — still unique, just with a redundant extra column. Super keys are permissive: add more columns to a unique set, and it stays unique.
+
+A candidate key tightens that. It's a super key with no redundant columns — remove any column and it stops being unique. Student i-d plus name is not a candidate key, because you can drop the name and it's still unique. In our table, student i-d, email, and roll number are each candidate keys — three genuine, minimal ways to identify a student. A table can have several candidate keys.
+
+The primary key is the candidate key you elect to identify rows throughout the design. It has to be unique and not null, and it's the key other tables will reference. Here we choose student i-d — stable, compact, always present.
+
+And the candidate keys you didn't pick become alternate keys. They still uniquely identify a row — you'd usually put a unique constraint on them — they're just not the identifier the model is built on. So with student i-d as primary, email and roll number are our alternate keys.
+
+Here's how they nest. A super key is unique, possibly with extras. A candidate key is a minimal super key. The primary key is the one candidate key you choose — exactly one per table. And the alternate keys are the rest. Two special cases get their own sections next: a primary key built from several columns at once, and a key that links to another table.

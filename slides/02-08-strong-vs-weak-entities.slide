@@ -1,0 +1,23 @@
+# Strong vs weak entities
+
+## Strong entity — stands on its own
+
+- **Independent existence** + its own primary key
+- `CUSTOMER`, `PRODUCT`, `DEPARTMENT` — meaningful by itself
+
+## Weak entity — can't exist alone
+
+- **Depends on a parent** — an **order line** has no meaning without its **order**
+- No key of its own — **parent key + local discriminator** (a *partial key*)
+- Linked to the owner by a **foreign key** that's part of its identity
+
+```
+ORDER (order_id PK) ──< ORDER_LINE (order_id FK, line_no)
+                        PK = (order_id, line_no)
+```
+
+## Why it matters
+
+- Tells you where a **composite key** + **mandatory FK** belong
+- **Lifecycle coupling** — delete the parent, cascade to the children
+- In a warehouse the weak table often **collapses into the fact's grain**

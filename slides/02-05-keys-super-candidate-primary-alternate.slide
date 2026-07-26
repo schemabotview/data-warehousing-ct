@@ -1,0 +1,24 @@
+# Keys — super, candidate, primary, alternate
+
+## Example — a STUDENT table
+
+```
+student_id · email · roll_no · dept_id · name
+```
+- `student_id`, `email`, `roll_no` each identify a student
+
+## The four terms
+
+- **Super key** — *any* unique set of columns (extras allowed)
+- **Candidate key** — a **minimal** super key — drop a column, uniqueness breaks
+- **Primary key** — the candidate you **choose**; **unique + NOT NULL**
+- **Alternate key** — the candidate keys **not** chosen
+
+## For STUDENT
+
+- Candidates: **student_id · email · roll_no**
+- Pick **student_id** as PK → **email · roll_no** become alternate keys
+
+## How they nest
+
+- super **⊇** candidate **→** one becomes **primary**, rest are **alternate**

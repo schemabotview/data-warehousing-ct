@@ -1,0 +1,22 @@
+# Why warehouses prefer surrogate keys
+
+## The five reasons
+
+- **Stability** — key stays fixed even when source data changes
+- **Performance** — small int → **smaller indexes, faster joins** at billions of rows
+- **Flexibility** — merge clashing IDs across sources into one clean key
+- **Simplicity** — uniform integer FKs, cheap to store & generate
+- **Enables SCD-2** — multiple history rows per real entity — a natural key **can't**
+
+## Costs — paid once, at load
+
+- No meaning → keep the **natural key as an attribute**
+- Extra lookup → the **ETL** resolves it once (Mod 09) · violates 3NF → already denormalized
+
+## The pattern
+
+```sql
+DimCustomer( CustomerSK PK, CustomerNK, ... )   -- surrogate + natural
+FactSales(   CustomerSK FK → DimCustomer )       -- join on the int
+```
+- Surrogate-keyed dimensions + integer-joined facts = **the star schema**

@@ -1,0 +1,23 @@
+# Composite keys
+
+## When one column isn't enough
+
+- A **primary key made of 2+ columns**, unique only **in combination**
+
+```
+order_id | line_no | product_id | qty
+  1001   |   1     |   P-77     |  2
+  1001   |   2     |   P-88     |  1     order_id + line_no
+  1002   |   1     |   P-77     |  5     together = one line
+```
+
+## Where they show up
+
+- **Bridge / junction** tables — the pair of FKs *is* the key (`student_id, course_id`)
+- **Weak entities** — parent key + a local discriminator
+- **Fact tables** — the combination of **dimension FKs** defines the grain
+
+## The catch
+
+- **Wide & awkward to join** — every reference carries *all* the columns
+- Warehouses swap in a single narrow **surrogate key**, keep the composite as attributes

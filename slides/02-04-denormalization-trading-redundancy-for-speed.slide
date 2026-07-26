@@ -1,0 +1,20 @@
+# Denormalization — redundancy for speed
+
+## The deliberate trade
+
+- **Add redundancy on purpose** — merge tables, duplicate columns
+- Goal: **fewer joins → faster reads** — a considered trade, not sloppiness
+
+## Why it fits a warehouse
+
+- **Reads dominate** — loaded in batches, queried constantly
+- A star **dimension** is denormalized: `product → subcategory → category` collapses into **one flat row** — one join reaches every level
+
+## What you give up
+
+- **More storage** + values duplicated across rows
+- **Update cost** — managed by a **controlled ETL load**, not ad-hoc writes
+
+## Rule of thumb
+
+- **Normalize for writes (OLTP) · denormalize for reads (OLAP)**

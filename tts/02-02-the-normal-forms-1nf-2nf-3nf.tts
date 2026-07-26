@@ -1,0 +1,13 @@
+The normal forms — one, two, and three N-F.
+
+Normalization proceeds in stages called normal forms. Each one is a rule a table must satisfy, and each builds on the one before. In practice, designers aim for third normal form — the first three rules carry almost all the value.
+
+The rules are stated in terms of two kinds of dependency, so let's name them first. A partial dependency is when a non-key column depends on only part of a composite, multi-column key — not the whole key. A transitive dependency is when a non-key column depends on another non-key column, rather than directly on the key. Hold on to those two.
+
+First normal form is about atomic values. Every cell holds a single value — no lists, no repeating groups, no phone-one, phone-two, phone-three columns. And each row is unique, identified by a primary key. First normal form just makes the table a proper table: one value per cell, one row per real thing.
+
+Second normal form adds: no partial dependency. Every non-key column must depend on the whole primary key, not just part of it. This only matters when the key is composite. If the key is order plus product, but the product name depends on product alone, that's a partial dependency — so you split the product name out into a product table.
+
+Third normal form adds: no transitive dependency. No non-key column may depend on another non-key column. If order determines customer, and customer determines customer city, then the city depends on the key only through the customer — that's transitive. Move the city into a customer table. The way to remember third normal form: every non-key column depends on the key, the whole key, and nothing but the key.
+
+There's also Boyce-Codd normal form, a stricter cousin of third — it says every determinant must itself be a candidate key. It cleans up rare edge cases with overlapping keys. Most designs stop at third normal form. Next, we'll take a redundant table apart, step by step.

@@ -1,0 +1,13 @@
+Natural key versus surrogate key.
+
+When you pick a primary key, you face a choice between two philosophies. Use an identifier the business already has — or invent one. That's natural key versus surrogate key.
+
+A natural key is a column drawn from real business data that already uniquely identifies a record — an email, a P-A-N, an I-S-B-N, a product S-K-U. It has business meaning, and it exists out in the real world. Its weakness is twofold: real-world identifiers can change, and they're often text — bigger and slower to index and join.
+
+A surrogate key is the opposite. It's an artificial identifier the system generates — typically an auto-incrementing integer, like customer i-d one-thousand-and-one. It has no business meaning, it doesn't exist outside the database, and, crucially, it never changes. It isn't derived from the row's data at all.
+
+Here's the problem a surrogate solves. An online store keys its customer dimension on the natural key — the email. Anita signs up as anita-at-old-dot-com and places some orders. Later she changes her email to anita-at-new-dot-com. With the natural key alone, the key just changed — so her two orders now look like two completely different people. But give her a surrogate key, and her identity stays stable while the email becomes just an attribute. Both orders still map to customer one-thousand-and-one — one customer.
+
+And that same stable surrogate is what makes slowly-changing-dimension type two possible. You can keep several historical rows for the same real customer, each with its own surrogate, all tracing back to one business identity.
+
+So, side by side: the natural key comes from business data, has meaning, but can change and is often slow text. The surrogate is system-generated, meaningless, permanent, a small fast integer, and it integrates cleanly across sources. The best practice: in warehouse dimensions, use a surrogate key as the primary key, and keep the natural key as an attribute, so you can still trace a row back to its source system. Why the warehouse leans so hard on surrogates — beyond this one example — is our closing section.

@@ -1,0 +1,25 @@
+# Splitting to 3NF — a worked example
+
+## Start — one flat table
+
+```
+order | cust | cust_city
+  1   | Ann  | Delhi
+  2   | Ann  | Delhi     <- city repeated
+  3   | Bob  | Pune
+```
+
+## Spot the transitive dependency
+
+- Key is **order** → `cust_city` depends on `cust`, and `cust` on `order`
+- So city depends on the key only **through** `cust` — **3NF forbids this**
+
+## Split it out
+
+- **orders** — `order, cust_id` — keeps a **foreign key** link
+- **customers** — `cust_id, name, city` — city written **once**
+
+## What we gained
+
+- **No update / insertion / deletion anomaly**
+- Cost: reading "orders with city" now needs a **join** on `cust_id`

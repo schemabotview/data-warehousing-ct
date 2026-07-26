@@ -5,12 +5,14 @@
 - **OLTP** — *runs* the business: tiny, constant transactions on **current** data
 - **OLAP** — *analyzes* the business: big aggregate scans over **history**
 
-## Side by side (OLTP · OLAP)
+## Side by side
 
-- **Operations** — single-record writes · large aggregate reads
-- **Data** — current & detailed · historical & summarized
-- **Schema** — normalized 3NF · denormalized star
-- **Users** — many clerks / apps · few analysts
+| Aspect | OLTP | OLAP |
+| --- | --- | --- |
+| **Operations** | single-record writes | large aggregate reads |
+| **Data** | current & detailed | historical & summarized |
+| **Schema** | normalized 3NF | denormalized star |
+| **Users** | many clerks / apps | few analysts |
 
 ## Why separate
 

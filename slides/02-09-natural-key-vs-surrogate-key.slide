@@ -1,0 +1,22 @@
+# Natural key vs surrogate key
+
+## Two philosophies
+
+- **Natural key** — from real data (`email`, `PAN`, `ISBN`, `SKU`) — **has meaning, can change**
+- **Surrogate key** — system-generated int (`cust_wid = 1001`) — **no meaning, never changes**
+
+## The problem — Anita changes her email
+
+```
+Natural key only        Surrogate key
+#1  anita@old.com        1001  anita@old.com
+#2  anita@new.com        1001  anita@new.com
+= two customers?!        = one customer
+```
+
+- Stable surrogate → orders stay linked, and **SCD-2 history** becomes possible
+
+## Best practice
+
+- Warehouse dimension PK = **surrogate**; keep the **natural key as an attribute**
+- Small int → **faster joins**, clean **multi-source** integration

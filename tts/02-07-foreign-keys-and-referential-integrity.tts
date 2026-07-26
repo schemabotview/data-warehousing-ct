@@ -1,0 +1,11 @@
+Foreign keys and referential integrity.
+
+Normalization scatters facts across many tables. A foreign key is what stitches them back together — and what guarantees the stitching is sound.
+
+So what is a foreign key? It's a column, or set of columns, in one table that references the primary key of another table. It's the pointer that says: this row belongs with that row. In the split we did earlier, the customer i-d in the orders table is a foreign key pointing at the customer i-d in the customers table. Every order names the customer it belongs to.
+
+But a foreign key isn't just documentation — the database enforces it. That guarantee has a name: referential integrity. It means every foreign-key value must exist in the parent table, or be null. In practice: you can't insert a student in department nine if no department nine exists — so there are no orphan rows. And you can't delete a department that still has students pointing at it, unless you deliberately cascade or set the values null — so there are no dangling references. The payoff is that the links in your normalized model can be trusted. A join never silently drops rows or points at nothing.
+
+And the warehouse is one giant application of this idea. A star schema is exactly this: the fact table's foreign keys each reference a dimension's primary key. Sales customer key points at the customer dimension. Product key points at the product dimension. Date key points at the date dimension. Those foreign-key-to-primary-key links are the star's rays.
+
+One nuance worth knowing. Warehouses often don't physically enforce these constraints at load time — checking them on every insert would slow a big batch load. Instead, the E-T-L process guarantees integrity: it resolves every key through lookups before loading, which we'll cover in module nine. The constraints may be declared but left disabled — kept for documentation and to help the optimizer. The concept is essential, even where the enforcement is handed to the pipeline.

@@ -1,0 +1,11 @@
+Composite keys.
+
+Sometimes no single column identifies a row — you need two or more columns together. A composite key is a primary key made of multiple columns that are unique only in combination.
+
+Take an order-line table, recording each line of each order. Order one-thousand-and-one has a line one and a line two. Order one-thousand-and-two has its own line one. Notice: the order i-d repeats across lines, and the line number repeats across orders. Neither column alone is unique. But the order i-d and the line number together identify exactly one line. That pair is the composite primary key.
+
+Composite keys show up in a few familiar places. In bridge, or junction, tables — the ones that model a many-to-many relationship, like student i-d and course i-d in an enrollment table. There, the pair of foreign keys is the key. They show up in weak-entity tables — a child that can't exist without its parent, like an order line without its order, keyed by the parent's key plus a local discriminator. And they show up in fact tables, where the grain of a row is often defined by the combination of its dimension foreign keys — that combination acts as the row's logical key.
+
+Now the catch. Composite keys are correct, but they're wide and awkward to join on. Every table that references the row has to carry all of the columns, every join has to match on all of them, and the indexes grow. In warehouse dimensions, that friction is exactly why we introduce a single surrogate key — one narrow integer that stands in for the whole composite — and keep the natural columns as attributes. That surrogate story runs through the last two sections of this module.
+
+Still, a composite key is the honest way to say: these columns together identify the row. And it ties straight into the next idea — several of those columns are usually foreign keys pointing at other tables. Foreign keys are what enforce that the links actually hold.

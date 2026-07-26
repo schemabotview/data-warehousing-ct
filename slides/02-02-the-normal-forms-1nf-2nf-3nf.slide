@@ -1,0 +1,18 @@
+# The normal forms
+
+## Two dependencies to name
+
+- **Partial** — a column depends on **part** of a composite key
+- **Transitive** — a column depends on **another non-key column**
+
+## The progression
+
+- **1NF** — **atomic** cells, unique rows — no lists or repeating groups
+- **2NF** — 1NF + **no partial dependency** — every column needs the *whole* key
+- **3NF** — 2NF + **no transitive dependency** — no column tied to another non-key
+- **BCNF** — 3NF + every **determinant** is a **candidate key** *(edge cases)*
+
+## The 3NF rule in one line
+
+- Every non-key column depends on **the key, the whole key, and nothing but the key**
+- Designers aim for **3NF** — the first three rules carry the value
