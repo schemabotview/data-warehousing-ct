@@ -1,12 +1,17 @@
 # What a data warehouse is
 
-## A central store, built for analysis
+## A central store for analysis
 
-- One repository collecting from **many source systems** — tuned for **reading**, not transactions
+- Collects data from **many source systems** into **one place** — to **access, analyze & report**
+- Built for **reading** (OLAP), not day-to-day transactions
 
 ## Inmon's four traits
 
-- **Subject-oriented** — organized around sales, customers, products (not the apps)
-- **Integrated** — cleaned to one currency, date & definition, so figures reconcile
+- **Subject-oriented** — around sales, customers, products (not the apps)
+- **Integrated** — one currency, date & definition, so figures reconcile
 - **Time-variant** — keeps **history**; compare this quarter to last year
-- **Non-volatile** — loaded then read; loads add data, they don't overwrite it
+- **Non-volatile** — loaded then read; loads add, they don't overwrite
+
+## Built from
+
+- **sources → ETL → storage → metadata → marts → BI** *(detailed in §04)*

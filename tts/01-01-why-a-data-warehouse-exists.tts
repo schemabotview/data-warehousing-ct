@@ -4,4 +4,6 @@ Your operational databases are built to answer one kind of question, fast: what 
 
 But the business needs the other kind of question. What happened across everything, over time? Total sales by region last quarter. Which products sell together. How a customer's value changed year over year. Run a question like that on the live operational system, and you slow the business down — and even then, you still can't reach the data sitting in all the other systems beside it.
 
-A data warehouse is a separate, central store. It collects data from all of those source systems, cleans and organizes it once, and keeps its history. And because it is built for reading and analysis instead of transactions, those heavy questions run fast — and they never touch production.
+A data warehouse exists to solve exactly this. It is a separate, central store. It collects data from every source system into one place, cleans and organizes it once, and keeps its history. And because it is built for reading and analysis instead of transactions, those heavy questions run fast — and they never touch production.
+
+And that is what it buys you: better decisions from one consistent, historical view; more efficient analysts who can self-serve; higher data quality, because everything is cleaned and reconciled on the way in; and deeper customer insight that no single application could reveal on its own.
