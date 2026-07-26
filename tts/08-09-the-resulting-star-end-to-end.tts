@@ -1,0 +1,9 @@
+The resulting star — end to end.
+
+Put the pieces together, and the design is complete: FACT SALES at the centre, five dimensions around it — a star, derived entirely by running the four steps on one bill. Dim date, dim customer, dim product, dim channel, and dim promotion ring the fact; and order i-d and order status sit on the fact itself, as degenerate dimensions.
+
+Now trace the whole design, because every part of the star traces back to a step. The process — step one, the sales order — is why the fact exists at all. The grain — step two, one order line — is what a fact row means. The dimensions — step three: date, customer, product, channel, promotion — are the points of the star. And the facts — step four: quantity through line total — are the measures at the centre. Four questions in, a working star out.
+
+But the real test of a model is whether it answers the questions that motivated it. So watch the star join do exactly that. Select the month name, the product line, the region, and the sum of line total. From fact sales, joined to dim date on the order-date key, to dim product on the product key, and to dim customer on the customer key. Grouped by month, product line, and region. That's "revenue by month, by product line, by region" — one fact, three dimension joins, one aggregate. The design works: measures from the centre, slices from the points, every question the same shape.
+
+And that gives us the four steps mapped cleanly onto the star. The process is the star's subject. The grain is its rows. The dimensions are its points. And the facts are its centre. That's the whole method, and the whole star. So: run the four steps, and a validated star falls out — fact at the centre, dimensions as points, answering "measure by attribute" queries directly. The design is proven by the very query it was built to serve.

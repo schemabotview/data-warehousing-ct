@@ -1,0 +1,11 @@
+Step four — identify the facts.
+
+The final step names the facts — the numeric measures you'll aggregate, each one true at the grain. For the order line, the measures are: quantity, unit price, discount amount, tax amount, and line total.
+
+Test every candidate measure by asking two things. First: is it numeric, and something you'd aggregate? Quantity and line total — yes, you sum them across dimensions. Second: is it true at this grain? A per-line quantity, yes. But an order-level shipping charge — no. That belongs to the order, not the line, so it can't sit at order-line grain; it would double-count across the order's lines. Grain mismatches like that are the classic step-four trap.
+
+And mind additivity — recall module three. Most measures here are additive — quantity, discount amount, tax amount, line total — which is the ideal. But unit price is a rate: keep it if it's useful, but know that it's non-additive — you never sum prices; you'd derive an average price after aggregating. So store additive amounts, and compute ratios last.
+
+Also, don't forget the degenerate dimensions. Two fields left over from the bill are neither measures nor worth a dimension table: order i-d, and order status. They're degenerate dimensions, from modules three and four — operational identifiers that ride on the fact, for grouping and audit.
+
+And with that, step four completes the fact's columns. The four steps now hand you the whole fact row: the foreign keys, from step three's dimensions — order-date key, customer key, product key, channel key, promotion key; the measures, from step four — quantity through line total; and the degenerate dimensions — order i-d and order status. So: step four picks the measures true at the grain — additive amounts preferred, rates flagged non-additive, grain mismatches rejected — plus any degenerate dimensions. Steps three and four together are the fact's columns.

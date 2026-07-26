@@ -1,0 +1,11 @@
+Load — full versus incremental.
+
+Load is the final move: writing the transformed data into the warehouse tables. And the key decision is how much to write each run — the whole table, or only what changed.
+
+A full load truncates the target and reloads it entirely, every run. The pros: it's dead simple, and it's self-correcting — whatever the last state was, you rebuild it fresh, so drift and past errors just wash out. The cons: it's expensive and slow at scale — you can't truncate and reload a billion-row fact table every night. So use it for small dimensions and reference tables, where reloading everything is cheap.
+
+An incremental load writes only the new or changed rows since the last run. The pros: it's efficient and scalable, because it only touches the delta — which is essential for large facts. The cons: it's more complex — you have to know what changed, using change data capture, section six, and you have to handle updates, not just inserts. So use it for big fact tables and large dimensions.
+
+Incremental loading needs a bookmark, and that's the high-water mark. You track the last-loaded timestamp or i-d, and next run you pull only the rows beyond it. Crucially, you advance the mark only on success — and that's what makes a re-run safe, which is section nine.
+
+One more distinction: facts append, but dimensions merge. The two table types load differently. Facts are usually append-only inserts — a new event is simply a new row. Dimensions are upsert, or merge, because an existing member may change — and that's the SCD-2 merge from module six. Most warehouses mix both strategies: full for the small stuff, incremental for the big stuff. So: load writes transformed data to the warehouse — full, meaning truncate-and-reload, simple, for small tables; or incremental, only the delta, scalable, for big ones — tracked by a high-water mark. Facts append; dimensions merge.

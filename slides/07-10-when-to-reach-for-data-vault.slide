@@ -13,8 +13,3 @@
 - A **small, stable, single-source** mart
 - A **quick** analytics deliverable, settled requirements
 - **No audit or integration** burden → model a **star directly**
-
-## Rule of thumb
-
-- DV = **enterprise integration layer** feeding many star marts
-- Focused, stable mart → **skip it, go straight to a star**

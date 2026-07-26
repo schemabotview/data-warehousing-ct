@@ -1,0 +1,22 @@
+# Building the order fact
+
+## FACT_SALES — grain: one order line
+
+```
+sales_key                          surrogate PK
+order_date_key … promotion_key     FKs  (step 3 dims)
+order_id, order_status             degenerate dims
+quantity … line_total              measures (step 4)
+```
+- `line_total` = **derived** (qty×price − disc + tax, module 05)
+
+## The surrogate-key lookup (ETL heart)
+
+- Bill has only **natural** keys — `C-4471`, `P-88`
+- Look up → `customer_key 1101`, `product_key 204`
+- Wires the fact to the **correct version** of each dim (module 09)
+
+## One bill → **two** fact rows
+
+- Two line items = two rows · same `order_id` (degenerate), diff `product_key`
+- Header values (customer, date) repeat as FKs on both lines

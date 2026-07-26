@@ -1,0 +1,20 @@
+# Data distribution — distribution & partition keys
+
+## Distribution key — **which node**
+
+- The column that assigns each row to a node (by hash)
+- **Even spread, no skew** — high-cardinality → nodes balanced
+- **Co-located joins** — fact + big dim on same key → **local** join, no **shuffle**
+  - e.g. `FACT_SALES` + `DIM_PRODUCT` on `product_key`
+- Small dims → **broadcast** (replicated to every node)
+
+## Partition key — **which segment**
+
+- Splits a table into segments by a column (often **date**)
+- Filter on it → read only relevant partitions (**pruning**, §09)
+- `FACT_SALES` by `order_date` → "2026" reads one year, not ten
+
+## Two axes, one goal
+
+- **Distribution** = balance + local joins · **Partition** = scan less
+- Redshift/Synapse: explicit `DISTKEY` · Snowflake/BigQuery: auto + partition cols

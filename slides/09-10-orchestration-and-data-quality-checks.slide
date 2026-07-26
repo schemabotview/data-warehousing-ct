@@ -1,0 +1,20 @@
+# Orchestration & data-quality checks
+
+## Orchestration — coordinate the steps
+
+- An orchestrator (Airflow, dbt, cloud) runs the pipeline as a **DAG**
+- **Order** — extract → stage → transform → **dims → facts** (§08)
+- **Scheduling** — nightly, hourly, or on data arrival
+- **Retries & recovery** — auto-retry, resume from checkpoint, **alert**
+
+## Data-quality checks — verify the result
+
+- **Row counts** — expected volume? (a drop = broken feed)
+- **Uniqueness / not-null** — PKs unique, FKs resolve
+- **Range / domain** — no negative qty, sane dates
+- **Reconciliation** — warehouse totals tie to **source** totals
+- On failure → **fail or quarantine**, never publish wrong numbers
+
+## Closing the loop
+
+- Orchestration = **reliable** · DQ = **trustworthy** → ready for marts & BI

@@ -1,0 +1,22 @@
+# Star-join optimization & partition pruning
+
+## Partition pruning — scan only relevant segments
+
+- `WHERE year = 2026` → read 2026's partitions, skip the rest
+- Zone maps (§07) skip blocks within → ~1/10th of a 10-year fact
+
+## Star-join optimization — filter fact **by** the dims
+
+- `WHERE product_line = 'Headsets'`:
+  1. Scan **small** `DIM_PRODUCT` → matching `product_key`s
+  2. Build a **bloom filter**, push down to the fact scan
+  3. Read only fact rows whose key is in the set
+- Semi-join / bloom pushdown — don't read the whole fact
+
+## Broadcast & co-located joins
+
+- Small dims **broadcast** to every node · shared dist key → **no shuffle** (§05)
+
+## Star beats snowflake **harder** here
+
+- Pruning/pushdown/broadcast love **few, wide, one-hop** dims

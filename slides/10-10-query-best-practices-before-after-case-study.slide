@@ -1,0 +1,24 @@
+# Query best practices — before → after
+
+## Habits that let the machinery work
+
+- **Name columns, never `SELECT *`** — columnar pays per column
+- **Filter on partition/cluster keys** — triggers pruning + zone maps
+- **No function on a filter column** — it **defeats** pruning
+- **Filter early, aggregate late** · **`UNION ALL`** when no dedup needed
+
+## Before → after
+
+```sql
+-- ✗ slow: every column + function blocks pruning → full scan
+SELECT * FROM fact_sales WHERE YEAR(order_date) = 2026;
+
+-- ✓ fast: 2 columns + plain range prunes to 2026
+SELECT product_key, line_total FROM fact_sales
+WHERE order_date BETWEEN '2026-01-01' AND '2026-12-31';
+```
+- Same result, a **fraction** scanned → faster **and** cheaper
+
+## The whole arc
+
+- **Model** (03–08) → **load** (09) → **run on cloud MPP** (10) → **query well**

@@ -1,0 +1,22 @@
+# Separation of compute & storage
+
+## Old: coupled · New: decoupled
+
+- Traditional MPP — each node holds **both** → resize = redistribute data
+```
+  compute clusters (stateless, on-demand)
+       │       │       │
+       └── cloud object storage ──┘  (S3/GCS/Blob — cheap, durable)
+```
+- Data lives **once** in cheap storage; compute is **ephemeral**
+
+## What it buys you
+
+- **Scale independently** — compute or storage, not both
+- **Concurrent clusters** over **one** dataset — ETL vs BI, no contention
+- **Pay separately** — storage always; compute only while running
+- **Instant resize** — no data movement
+
+## In the platforms
+
+- Snowflake **virtual warehouses** · BigQuery **serverless** (no clusters)

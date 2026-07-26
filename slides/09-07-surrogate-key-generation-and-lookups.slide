@@ -1,0 +1,24 @@
+# Surrogate key generation & lookups
+
+## Generation — dimensions mint their keys
+
+- New member → generate a **surrogate**: sequence / identity / hash (DV)
+- Dims **own** their keys; natural key rides along · reserve `0` = **Unknown**
+
+## Lookup — facts resolve keys at load
+
+- Source fact has only **natural** keys → look each up:
+```
+C-4471 → DIM_CUSTOMER → customer_key 1101
+P-88   → DIM_PRODUCT  → product_key  204
+```
+- The surrogates become the fact's **FKs**
+
+## Handling the misses
+
+- **Not found** → load its dim first, or point at **Unknown** + backfill (late-arriving)
+- **SCD-2** → grab the version **current at the event date**, not just `is_current`
+
+## Why it's the crux
+
+- Makes the star **join correctly** and **preserves history**

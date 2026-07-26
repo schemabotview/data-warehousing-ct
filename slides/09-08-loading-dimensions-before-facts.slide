@@ -1,0 +1,19 @@
+# Loading dimensions before facts
+
+## The hard rule — dims first, then facts
+
+- A fact needs a **surrogate FK** per dimension key
+- That surrogate exists **only after** the dim row is loaded
+
+## The sequence per run
+
+1. **Load / merge dimensions** — new members + SCD changes (module 06)
+2. **Load facts** — the lookups now **resolve**
+
+- Facts first → lookups **miss** → rejected or silently → **Unknown**
+- Dims first → **referential integrity**: every FK hits a real dim row
+
+## Early-arriving facts (fact before its dim)
+
+- Insert an **inferred placeholder** member — natural key known, attrs NULL
+- Point the fact at its surrogate · **backfill** when the dim feed catches up

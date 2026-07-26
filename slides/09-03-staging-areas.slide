@@ -1,0 +1,22 @@
+# Staging areas
+
+## A landing zone between source & warehouse
+
+- Holds the **raw output of extract**, mirroring the source
+- Schema-light, uninterpreted · transform reads **from here**
+
+## Why it earns its place
+
+- **Decouples** extract from transform → **source released** fast
+- **Safe workspace** — clean/conform without touching source or warehouse
+- **Restart checkpoint** — re-run transform without re-extracting
+- **Raw audit copy** — reprocess after a logic fix; prove what arrived
+
+## Transient or persistent
+
+- **Transient** — truncate & reload each run (working buffer)
+- **Persistent** — keep every extract (raw archive, ~DV raw layer)
+
+## ETL vs ELT
+
+- ETL: staging in the engine · ELT: **raw tables in the warehouse**

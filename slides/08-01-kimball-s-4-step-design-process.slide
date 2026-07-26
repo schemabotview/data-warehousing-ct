@@ -1,0 +1,23 @@
+# Kimball's 4-step design process
+
+## The recipe — always in this order
+
+1. **Pick the business process** — the activity to model
+2. **Declare the grain** — what one fact row means
+3. **Identify the dimensions** — how you slice it
+4. **Identify the facts** — the measures you aggregate
+
+## The order is not optional
+
+- Each step **constrains the next**
+- Can't list dims or facts until the **grain** is fixed
+- Reorder → mixed grain, orphaned measures, mis-fit dims
+
+## Design from the **business**, not the source
+
+- Model a **process** the org measures (sales, shipments)
+- Not a copy of the source system's tables
+
+## This module
+
+- Walk each step → work a real **bill** → build the star → read the **DBML**

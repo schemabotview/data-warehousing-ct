@@ -1,0 +1,23 @@
+# Building the dimensions with surrogate keys
+
+## Group the bill's **attributes** by entity
+
+```
+customer id, name, address  → DIM_CUSTOMER
+product id, name, price      → DIM_PRODUCT
+order date                   → DIM_DATE
+channel                      → DIM_CHANNEL
+promo code                   → DIM_PROMOTION
+```
+
+## Fit each one out (the module-04 checklist)
+
+- **Surrogate key** — the integer the fact points at
+- **Keep the natural key** as an attribute (traceability)
+- **SCD per attribute** — address → **Type 2**, name fix → Type 1
+- **Reuse conformed** dims where they already exist
+
+## Why the surrogate matters
+
+- Bill knows only `C-4471` (NK) → dim mints `1101` (SK)
+- Fast integer join **and** history — Ana's move = a new `customer_key` row

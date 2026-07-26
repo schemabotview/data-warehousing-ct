@@ -1,0 +1,17 @@
+# Change data capture (CDC)
+
+## Capture the source's inserts / updates / deletes → load only the **delta**
+
+## The methods, weakest → strongest
+
+- **Timestamp / high-water** — `last_modified`; simple, but **misses deletes**
+- **Trigger-based** — triggers log changes; accurate, **source overhead**
+- **Log-based** — read the txn log; **every** change, **low impact** → gold standard
+- **Snapshot diff** — compare full snapshots; complete but **expensive**
+
+## Why CDC matters
+
+- Re-extracting a whole busy source **doesn't scale** + hammers it
+- **Feeds incremental loads** (§05) — the delta *is* what you write
+- **Drives the SCD-2 merge** (module 06) — a change → expire-and-insert
+- Enables **near-real-time** — small frequent deltas, not one giant batch

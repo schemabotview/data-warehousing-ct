@@ -1,0 +1,22 @@
+# Load — full vs incremental
+
+## Full load — truncate & reload **everything**
+
+- **Simple** & **self-correcting** — rebuild fresh, drift washes out
+- **Expensive** at scale — can't reload a billion rows nightly
+- Use for **small dims & reference tables**
+
+## Incremental load — only **new/changed** rows
+
+- **Efficient, scalable** — touches only the delta
+- More complex — must **know what changed** (CDC) + handle updates
+- Use for **big facts & large dims**
+
+## The high-water mark
+
+- Track the **last-loaded timestamp/id**; next run pulls **beyond** it
+- Advance **only on success** → safe re-run
+
+## Facts append · dimensions merge
+
+- Facts = **insert** new events · dims = **upsert/merge** (SCD-2, module 06)

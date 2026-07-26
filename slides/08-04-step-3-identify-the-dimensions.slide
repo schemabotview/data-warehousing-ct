@@ -1,0 +1,22 @@
+# Step 3 — identify the dimensions
+
+## Ask: how do we **describe** an order line?
+
+- **When** sold? → **Date**
+- **Who** bought? → **Customer**
+- **What** sold? → **Product**
+- **Where / how** sold? → **Channel** (Web, App, Amazon, Retail)
+- **Why / what deal?** → **Promotion**
+
+- Anything true **at the order-line level** can be a dimension
+
+## Design habits
+
+- **Surrogate key** each one (the fact will reference it)
+- **Reuse conformed** dims — don't rebuild `DIM_DATE`
+- **Be generous** — more dims & attributes = more questions answered
+- Note **SCD intent** (customer address → Type 2, module 06)
+
+## Result — 5 dimensions
+
+- **Date · Customer · Product · Channel · Promotion**

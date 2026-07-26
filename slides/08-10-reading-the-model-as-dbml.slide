@@ -1,0 +1,25 @@
+# Reading the model as DBML
+
+## Text notation for tables + relationships
+
+```dbml
+Table FactSales {
+  sales_key      integer [primary key]
+  customer_key   integer [not null]
+  order_id       integer [note: 'degenerate dimension']
+  quantity       integer
+  line_total     decimal(12,2)
+}
+Ref: FactSales.customer_key > DimCustomer.customer_key
+```
+
+## How to read it
+
+- **`Table { }`** — a table; each line = **column · type · tags**
+- **`[primary key]`** = surrogate PK · **`[not null]`** = required FK · **`[note]`** = intent
+- **`Ref: … > …`** = one **edge of the star** (FK → PK, many-to-one)
+
+## Why DBML
+
+- **Version-controlled & reviewable** — text, diffs like code
+- **Single source** of the physical model · **renders an ERD** (dbdiagram.io)

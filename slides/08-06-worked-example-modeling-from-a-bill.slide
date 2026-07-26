@@ -1,0 +1,25 @@
+# Worked example — modeling from a bill
+
+## The bill (a Jabra order invoice)
+
+```
+Order #4471  Date 2026-04-12  Channel Web  Promo SPRING10
+Customer: Ana Ruiz (C-4471)  Ship: Barcelona
+Product           Price  Qty  Subtotal  Tax
+Evolve2 65 (P-88) 600.00  2   1,200.00  252.00
+Elite 8   (P-91)  300.00  1     300.00   63.00
+```
+
+## Tag each field — **A**ttribute or **M**easure
+
+- **A** — order id/date, customer, address, product, **price**, channel, promo
+- **M** — **quantity**, **subtotal** (line_total), **tax**
+
+## This one pass *is* steps 3 & 4
+
+- **Attributes → dimensions** · **Measures → the fact**
+
+## The trap it avoids
+
+- **Price is an A** — a number, but you **don't sum** it (a rate)
+- Test = "do you **aggregate** it?", not "is it numeric?"

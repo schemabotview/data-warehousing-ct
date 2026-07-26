@@ -1,0 +1,20 @@
+# Materialized views & result caching
+
+## The fastest query is one you **don't recompute**
+
+## Result caching — reuse an identical query
+
+- Same query again → returns **instantly from cache**, no rescan
+- **Auto-invalidated** when data changes → never stale
+- Snowflake result cache · BigQuery cached results (automatic, free)
+
+## Materialized views — precompute an aggregate
+
+- A **stored, engine-maintained** aggregate = the **module-03 aggregate fact**, automated
+- MV of *monthly sales by product line* → a few thousand pre-rolled rows
+- Optimizer **auto-rewrites** a base-`FACT_SALES` query to use the MV
+
+## Same trade-off · layered
+
+- MV costs **storage + refresh** for **speed** — keep the atomic fact beneath
+- MV cuts compute · **cache** cuts it to **zero** on exact repeat

@@ -1,0 +1,11 @@
+Staging areas.
+
+Between extract and the warehouse sits the staging area — a landing zone where raw extracted data rests temporarily, before it's transformed. It looks like plumbing, but it's what makes a pipeline robust.
+
+So what is staging? It's a set of tables, or files, that hold the raw output of extract, usually mirroring the source's shape — schema-light, minimally typed, uninterpreted. Data lands here first, and transformation reads from here, not from the source.
+
+Why does it earn its place? Four reasons. First, it decouples extract from transform. Extract dumps to staging fast and then disconnects — so the source system is released quickly, minimising its load. Transformation can then proceed on its own schedule. Second, it's a safe workspace — you clean, conform, and join in staging, without ever touching the live source or the published warehouse. Third, it's a restart checkpoint — if transform fails, you re-run from staging, with no need to re-extract from the source; that ties to restartable loads, in section nine. And fourth, it's a raw audit copy — keeping the untouched extract lets you reprocess, replaying transforms after a logic fix, and it proves what actually arrived.
+
+Staging comes in two lifetimes. Transient staging is truncated and reloaded each run — just a working buffer. Persistent staging retains the history of every extract — a durable raw archive, close in spirit to a Data Vault raw layer from module seven.
+
+And a note on ETL versus ELT. In ETL, staging lives in the ETL engine, before the warehouse. In ELT, staging is often raw tables inside the warehouse itself — you load into staging tables, then transform them into the star with SQL. Same role, different address. So: the staging area is the pipeline's landing zone. It decouples extract from transform, gives you a safe workspace, a restart checkpoint, and a raw audit copy — transient or persistent, in the ETL engine or inside the warehouse.

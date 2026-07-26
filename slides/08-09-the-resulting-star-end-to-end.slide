@@ -1,0 +1,24 @@
+# The resulting star — end to end
+
+## Four steps in → a star out
+
+```
+     DIM_DATE      DIM_CUSTOMER
+          \          /
+DIM_CHANNEL—FACT_SALES—DIM_PRODUCT
+          /          \
+   DIM_PROMOTION   (order_id = degenerate)
+```
+- **Process** → the fact · **Grain** → its rows
+- **Dimensions** → the points · **Facts** → the centre
+
+## Prove it answers the business
+
+```sql
+SELECT d.month_name, p.product_line, c.region, SUM(f.line_total)
+FROM   fact_sales f
+JOIN   dim_date d … JOIN dim_product p … JOIN dim_customer c
+GROUP BY d.month_name, p.product_line, c.region
+```
+- "Revenue by month, product line, region" — one fact, three joins
+- Measures from the **centre**, slices from the **points**

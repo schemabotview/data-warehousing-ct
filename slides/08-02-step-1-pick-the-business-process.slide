@@ -1,0 +1,21 @@
+# Step 1 — pick the business process
+
+## A process = a measurable **activity**
+
+- Taking a sales order · shipping a parcel · settling a payment
+- **Not** a department, a report, or a dashboard
+
+## One process → one fact table
+
+- Build the warehouse **process by process**
+- Conformed dims stitch the stars into a galaxy (module 05)
+- Modeling "everything" at once = how designs collapse
+
+## How to choose — **value × data readiness**
+
+- **Value** — the most pressing questions (usually **sales**)
+- **Readiness** — data available, clean, understood → an early win
+
+## Our worked process
+
+- **"A customer places a sales order"** → becomes `FACT_SALES`

@@ -1,0 +1,18 @@
+# Why warehouses moved to the cloud
+
+## From a big fixed box…
+
+- On-prem appliance, sized for **peak**, idle the rest, scaled by buying hardware
+
+## What the cloud changed
+
+- **Elasticity** — scale compute on demand, pay for what you use
+- **Separation of compute & storage** — cheap storage, compute on demand (§03)
+- **MPP under the hood** — billions of rows scanned in parallel (§02)
+- **Fully managed** — no hardware, patching, or manual index tuning
+- **Opex, not capex** — per-query billing, not an up-front appliance
+
+## The modern shape
+
+- **Cloud · MPP · columnar · compute/storage-separated**
+- Tune with **distribution, clustering, pruning, caching** — **not** B-tree indexes

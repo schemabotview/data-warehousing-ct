@@ -1,0 +1,24 @@
+# ETL vs ELT
+
+## Same 3 operations — Extract · Transform · Load
+
+## ETL — transform **before** you land
+
+```
+sources → EXTRACT → TRANSFORM (ETL engine) → LOAD → warehouse
+```
+- Clean off to the side; warehouse sees only finished data
+- Suits **precious** warehouse compute
+
+## ELT — land first, transform **in place**
+
+```
+sources → EXTRACT → LOAD raw → warehouse → TRANSFORM (SQL)
+```
+- Raw lands first (audit, reprocessing) · transform = **in-warehouse SQL**
+- Rides **cheap, scalable** cloud/MPP compute (module 10)
+
+## Why it matters
+
+- Different order → different architecture
+- **ELT dominates the cloud** — push work to where the data sits

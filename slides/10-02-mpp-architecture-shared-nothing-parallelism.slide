@@ -1,0 +1,24 @@
+# MPP architecture — shared-nothing parallelism
+
+## Many nodes, in parallel — not one big machine
+
+## Shared-nothing
+
+- Each node owns a **data slice** + its **own** CPU, memory, disk
+- No shared bottleneck → add nodes ≈ **linear** capacity
+
+```
+        node 1 ─ slice of FACT_SALES
+query ─ node 2 ─ slice of FACT_SALES  → combine → result
+        node 3 ─ slice of FACT_SALES
+```
+
+## How a query runs
+
+- **Leader** plans & splits into fragments · **compute nodes** run their slice
+- Billion rows / 100 nodes → each scans 10M → **~100× speedup**
+
+## Fits analytics, not OLTP
+
+- Analytics = **scan + aggregate** huge sets → parallelism wins
+- **Scale out** (add nodes), not scale up (bigger box)

@@ -1,0 +1,21 @@
+# Extract — pulling from source systems
+
+## Pull from where the business runs
+
+- Jabra sources: **web store · POS · ERP · payment gateway**
+
+## The challenges
+
+- **Heterogeneous** — DBs, APIs, files, logs; each speaks differently
+- **Don't overload the source** — it's **live**; use off-hours, throttle, a **replica**
+- **Read-only** — take a faithful copy, leave the source untouched
+
+## Full vs incremental extract
+
+- **Full** — the whole dataset each run; fine for small sources
+- **Incremental** — only what **changed** (timestamp / CDC); essential at scale
+
+## Preserve source fidelity
+
+- Land data **as-is** → **audit** + **reprocessing**
+- Cleaning & conforming come **later**, in transform

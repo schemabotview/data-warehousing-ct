@@ -1,0 +1,15 @@
+# The platforms
+
+## All MPP + columnar · run stars beautifully
+
+- **Snowflake** — multi-cloud · **virtual warehouses** · micro-partitions + auto-clustering · minimal tuning
+- **BigQuery** — **serverless** (per-query slots) · partition + cluster cols · billed **per bytes scanned**
+- **Redshift** — AWS · most **manual** — **DISTKEY + SORTKEY** · RA3 = compute/storage split
+- **Synapse / Fabric** — Azure · explicit **distribution** (hash / round-robin / replicated)
+
+## The common thread
+
+- Columnar · MPP · cloud → a **star schema fits all**
+- Axis of difference = **automatic vs manual** tuning
+  - auto: Snowflake, BigQuery · explicit keys: Redshift, Synapse
+- **Choose by** cloud · tuning appetite · pricing (per-second vs per-byte)

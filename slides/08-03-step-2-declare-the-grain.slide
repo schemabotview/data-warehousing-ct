@@ -1,0 +1,20 @@
+# Step 2 — declare the grain
+
+## Say it as a sentence
+
+> **one row per product per order** = one **order line**
+
+- Not "per order" (hides products) · not "per day" (an aggregate)
+
+## Choose the **finest** grain the source allows
+
+- Atomic = **maximum flexibility**
+- Roll **up** to any summary later · never roll **down**
+- Capture detail now → future questions stay answerable
+
+## Why it must precede steps 3 & 4
+
+- The grain is the **contract** the next steps are held to
+- **Dimensions** — only things true *at the order-line level*
+- **Facts** — only measures meaningful *per order line*
+- **One grain per fact table** — never mix lines and totals

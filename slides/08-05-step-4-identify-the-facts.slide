@@ -1,0 +1,23 @@
+# Step 4 — identify the facts
+
+## The measures — true at the grain
+
+- `quantity`, `unit_price`, `discount_amount`, `tax_amount`, `line_total`
+
+## Test every candidate
+
+- **Numeric & aggregated?** — you'd `SUM` it
+- **True at *this* grain?** — an order-level shipping charge is **not** (it double-counts across lines)
+
+## Mind additivity (module 03)
+
+- Most are **additive** — `quantity`, `line_total` ✓
+- `unit_price` is a **rate** → **non-additive**; average *after* aggregating
+
+## Don't forget the degenerates
+
+- `order_id`, `order_status` — no dim table, ride **on the fact**
+
+## The fact's columns = steps 3 + 4
+
+- **FKs** + **measures** + **degenerate dims**

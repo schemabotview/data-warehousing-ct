@@ -1,0 +1,21 @@
+# Columnar storage & compression
+
+## Row vs column layout
+
+```
+row:      [1,Ana,Madrid,600] [2,Leo,Sevilla,300] …
+columnar: [1,2,…][Ana,Leo,…][Madrid,Sevilla,…][600,300,…]
+```
+- Row = fetch one whole row (OLTP) · Columnar = few columns, many rows (OLAP)
+
+## Why it's fast
+
+- **Read only needed columns** — `SUM(line_total)` skips 20 others (why `SELECT *` is a sin)
+- **Compression** — one type, low variety → run-length / dictionary → less **I/O**
+- **Vectorised** — process compressed column blocks in bulk
+
+## It replaces the index
+
+- Reading one compressed column across MPP nodes is already cheap
+- **Data skipping** (zone maps, §07) does the index's old job
+- "Add an index" → "**store columnar & cluster well**"

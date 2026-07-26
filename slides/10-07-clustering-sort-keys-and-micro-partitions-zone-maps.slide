@@ -1,0 +1,22 @@
+# Clustering, sort keys & zone maps
+
+## Zone maps — skip blocks that can't match
+
+- Each column block stores **min/max** metadata = a zone map
+```
+WHERE order_date = '2026-04-12'
+  block A  min 2020 max 2021  → skip
+  block B  min 2026 max 2026  → read
+  block C  min 2027 max 2027  → skip
+```
+- **Micro-partitions** (Snowflake) · **zone maps / block-range** (Redshift, BigQuery)
+
+## Clustering & sort keys — make skipping work
+
+- Zone maps only help if related values sit **together**
+- **Physically order** data by filter columns: `SORTKEY` · `CLUSTER BY` · auto-clustering
+- Cluster on `order_date` → April 2026 in a few blocks, tight min/max
+
+## The mental swap
+
+- Old: *add an index* → New: **cluster/sort + zone-map pruning**

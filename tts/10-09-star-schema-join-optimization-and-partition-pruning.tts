@@ -1,0 +1,11 @@
+Star-schema join optimization and partition pruning.
+
+Here's the payoff of choosing a star, back in module five: the MPP optimizer has specific tricks for exactly that shape — so a well-designed star runs fast because it's a star. Three optimizations do the heavy lifting.
+
+First, partition pruning — scan only the relevant segments. The query's filters decide which partitions are even touched. Where year equals twenty twenty-six reads only twenty twenty-six's partitions, and skips the rest; and then zone maps, from section seven, skip blocks within them. So a ten-year fact answers a one-year question by scanning roughly a tenth of the data — often far less.
+
+Second, star-join optimization — filter the fact by the dimensions. The optimizer uses the small dimensions to filter the huge fact, before scanning it fully. Take: where product line equals Headsets. Step one: scan the small dim product, and collect the matching product keys. Step two: build a bloom filter from them, and push it down to the fact scan. Step three: read only the fact rows whose product key is in that set — and skip the rest. This is a semi-join, or bloom-filter pushdown — and it avoids reading the whole fact just to throw most of it away.
+
+Third, broadcast and co-located joins. Small dimensions are broadcast to every node, so the fact joins them locally. And a fact and a big dimension that share a distribution key join without a shuffle — that's section five. Either way, there's no cross-network data movement.
+
+And this is why the star beats the snowflake even harder here. Each of these — pruning, bloom-filter pushdown, broadcast — works best with few, wide, denormalized dimensions, one hop from the fact. A snowflake's extra join levels just give the optimizer more chances to shuffle, and less to prune. So on MPP, the star's advantage actually widens — that's module five's modern tilt. So: a star runs fast on MPP by design — partition pruning scans only the relevant segments, star-join optimization uses the small dimensions, via bloom filters, to filter the huge fact, and broadcast and co-located joins avoid shuffles. The denormalized star is what makes all of these possible.

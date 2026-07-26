@@ -1,0 +1,20 @@
+# Transform — cleaning, conforming, deduping
+
+## Raw data → warehouse-ready
+
+## The core operations
+
+- **Clean** — nulls, bad types, invalid values; standardise dates/currency/casing
+- **Conform** — map source codes to shared values (`'M'`/`'Male'`/`'1'` → `Male`)
+- **Deduplicate** — same customer from web+POS+ERP → **one** row
+- **Derive** — compute measures (`line_total`), apply business rules
+- **Integrate** — join & merge cleaned sources into unified rows
+
+## The single version of truth
+
+- Data quality & consistency are **won or lost here**
+- Conform + dedupe many sources → one trustworthy picture
+
+## ETL vs ELT
+
+- ETL: in the engine, before load · ELT: **SQL in-warehouse** (e.g. dbt)

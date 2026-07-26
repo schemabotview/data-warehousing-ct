@@ -1,0 +1,11 @@
+Materialized views and result caching.
+
+The fastest query is the one you don't recompute. And two platform features avoid recomputation — result caching, and materialized views. And they layer neatly.
+
+First, result caching — reusing an identical query's answer. The platform caches a query's result; so if you run the same query again, it returns instantly, from cache, with no rescan. Dashboards that fire the same query all morning pay for it just once. And the cache is invalidated when the underlying data changes, so you never see a stale answer. This is the Snowflake result cache, and BigQuery's cached results — automatic, and free.
+
+Second, materialized views — precomputing an aggregate. A materialized view, or MV, is a stored, precomputed query result — typically an aggregate — that the platform keeps up to date as the base data changes. This is the aggregate fact from module three, now maintained by the engine, instead of hand-rolled ETL. An MV of monthly sales by product line answers that dashboard from a few thousand pre-rolled rows, instead of scanning the whole fact. And here's the clever part: the optimizer can automatically rewrite a query written against the base FACT SALES to use the MV, whenever it covers the request — so you get the speed-up without even changing the query.
+
+Now, it's the same trade-off as aggregates. An MV costs storage plus refresh, in exchange for query speed — which is exactly the aggregate-fact bargain, from modules three and nine. So build MVs for known, repeated, expensive aggregations, and keep the atomic fact as the source of truth beneath them.
+
+And the two features layer. The materialized view cuts the compute, because the roll-up is already done. And the result cache cuts it to zero, on an exact repeat. Together, they make dashboards feel instant. So: result caching returns an identical query from cache, auto-invalidated on data change; and materialized views store an engine-maintained aggregate that the optimizer can auto-substitute. Both trade storage and refresh for speed — it's the aggregate-fact bargain, automated.

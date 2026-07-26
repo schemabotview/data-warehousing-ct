@@ -1,0 +1,20 @@
+# Idempotent & restartable loads
+
+## Pipelines fail — what matters is the **re-run**
+
+## Idempotent — safe to run twice
+
+- Twice = same result as once · **no duplicates, no double-counts**
+- **MERGE/upsert** on natural key (+ effective date) — not blind `INSERT`
+- **Delete-then-insert a partition** — replaces, never appends
+- **Deterministic (hash) keys** — duplicates collapse (module 07)
+
+## Restartable — resume after failure
+
+- **Staging** as a checkpoint — re-transform without re-extract
+- **Per-step state** — resume at the first incomplete step
+- **High-water mark advances only on success** — re-pull exactly the delta
+
+## The operational backbone
+
+- Failure becomes a **re-run**, not a hand-repair · same guarantee as the SCD-2 merge
