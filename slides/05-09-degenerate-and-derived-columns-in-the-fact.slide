@@ -1,0 +1,23 @@
+# Degenerate & derived columns in the fact
+
+## Degenerate dimensions — id, no table
+
+- `order_id`, `order_line_id`, `order_status` on `FACT_SALES`
+- Not measures, no table → **group** a transaction's lines · **audit** trail
+
+## Derived columns — pre-computed & stored
+
+```
+line_total = quantity * unit_price - discount_amount + tax_amount
+```
+- Also flags like `is_returned`
+
+## Store it, or compute at query time?
+
+- **Store** → instant, one agreed definition · costs space + ETL
+- **Compute** → no storage, always in sync · repeated work, may diverge
+- Warehouses usually **store** common derived measures
+
+## One caution
+
+- Store derived **amounts** (additive), **not ratios** — divide *after* aggregating

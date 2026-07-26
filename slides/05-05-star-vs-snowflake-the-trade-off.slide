@@ -1,0 +1,23 @@
+# Star vs snowflake — the trade-off
+
+## One dial: how normalized the dimensions are
+
+```
+Aspect        Star ★            Snowflake ❄
+Dimensions    flat              multi-level
+Joins         fewer             more
+Query speed   faster            slower
+Complexity    low               high
+Redundancy    more              less
+Storage       more              less
+Design        top-down          bottom-up
+```
+
+## Which usually wins — the star
+
+- **Storage is cheap; query time & analyst effort are not**
+- Simplicity **compounds** — easy SQL, easy BI modelling
+
+## Snowflake only for a reason
+
+- A **huge** dim with a repetitive sub-tree · a **shared** outrigger · a **tooling** rule

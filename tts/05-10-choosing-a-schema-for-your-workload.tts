@@ -1,0 +1,11 @@
+Choosing a schema for your workload.
+
+Three shapes, one decision. Star, snowflake, and galaxy aren't a ranking — they answer different questions. So here's how to choose between them.
+
+Start with the default: build a star. For almost every warehouse, and almost every dimension, you want a fact ringed by flat, denormalized dimensions. It's the fastest to query, the simplest to understand, and the friendliest to BI tools. Make the star your default, and deviate only with a reason.
+
+Next, snowflake — but only by exception, and only for a specific dimension. You'd normalize one dimension into sub-tables when one of three things forces it. When you have a genuinely huge dimension with a large, highly repetitive sub-hierarchy, where the storage saving is actually real. When a sub-dimension is shared across several dimensions — an outrigger you want to maintain in one place, like Jabra's dim geography. Or when a tool or governance rule mandates normalized reference data. In every case, you snowflake the one dimension that needs it, and leave all the rest flat. It's a scalpel, not the default.
+
+Then, galaxy — which you don't so much choose as grow into. Model your first business process as a star. When the next process arrives — shipping, payments — you add it as another star that reuses the conformed dimensions you already built. Any multi-process enterprise ends up a galaxy, and you plan it with the bus matrix.
+
+And finally, the modern tilt. On columnar, massively-parallel cloud platforms, joins are cheaper and storage cheaper still — which pushes even harder toward the flat star, and away from snowflaking; module ten returns to this. So: default to a star; snowflake a single dimension only when size, sharing, or tooling demands it; and let conformed dimensions grow your stars into a galaxy as processes are added.

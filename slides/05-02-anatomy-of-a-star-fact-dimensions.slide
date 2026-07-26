@@ -1,0 +1,24 @@
+# Anatomy of a star — fact + dimensions
+
+## The centre — the fact
+
+- `FACT_SALES`: **measures** + a **FK per dimension**
+- Grain fixes the row · **long & narrow** (few cols, many rows)
+
+## The points — the dimensions
+
+- Descriptive **attributes** + a **surrogate PK**
+- **Wide & shallow** (many cols, few rows)
+
+## The wiring — one join per point
+
+```
+FACT_SALES.customer_key ─► DIM_CUSTOMER.customer_key (PK)
+FACT_SALES.product_key  ─► DIM_PRODUCT.product_key   (PK)
+```
+- **One-to-many** · no join *between* dimensions
+- **1 fact + N dims = N+1 tables, ≤ N joins**
+
+## Built for the **star join**
+
+- Measures from the **centre**, labels from the **points**

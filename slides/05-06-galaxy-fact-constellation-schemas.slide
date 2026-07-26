@@ -1,0 +1,23 @@
+# Galaxy / fact-constellation schemas
+
+## Many facts, shared dimensions
+
+```
+           DIM_DATE  DIM_PRODUCT  DIM_CUSTOMER
+              │          │            │
+FACT_SALES ───┼──────────┼────────────┤
+FACT_SHIPMENT ┼──────────┼────────────┤
+FACT_PAYMENTS ┴──────────┴────────────┘
+```
+- Each fact: own **grain + measures** · **shared** conformed dims
+- The Jabra warehouse *is* a galaxy
+
+## Why it's the real-world shape
+
+- Every enterprise is **multi-process** — a fact per process
+- **Conformed dims** let you **drill across** processes (module 04)
+- The **bus matrix** is the plan: processes → facts, shared cols → dims
+
+## How it grows
+
+- Build **one star**, add the next as another star **reusing** the dims

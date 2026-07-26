@@ -1,0 +1,22 @@
+# The snowflake schema
+
+## A star with **normalized** dimensions
+
+- Each dimension split into related **sub-dimension** tables
+```
+FACT_SALES ─ DIM_PRODUCT ─ DIM_CATEGORY ─ DIM_PRODUCT_LINE
+```
+- Dimensions sprout sub-dims → the diagram looks like a **snowflake**
+
+## A real one — the outrigger
+
+```
+FACT_SHIPMENT ─ DIM_WAREHOUSE ─ DIM_GEOGRAPHY
+```
+- Shared, normalized sub-dim = an **outrigger** (maintain once)
+
+## Costs & saves
+
+- **Saves** — less redundancy, less storage
+- **Costs** — more joins, more FKs, complex SQL, slower reads
+- **Bottom-up** design (vs the star's top-down)

@@ -1,0 +1,23 @@
+# The star schema
+
+## One fact, a ring of dimensions
+
+```
+     DIM_DATE     DIM_CUSTOMER
+          \         /
+DIM_CHANNEL—FACT_SALES—DIM_PRODUCT
+          /         \
+   DIM_PROMOTION    (…)
+```
+- Each dimension joins **directly** to the fact — one hop
+
+## Why this shape
+
+- **Fast** — every dimension is **one join** away, no chains
+- **Simple** — anyone reads it; BI tools generate the SQL
+- **Uniform** — join, filter, group, aggregate — every query alike
+
+## The trade it accepts
+
+- Flat dimensions **repeat data** → more storage
+- Safe here: ETL controls writes, not constant user updates

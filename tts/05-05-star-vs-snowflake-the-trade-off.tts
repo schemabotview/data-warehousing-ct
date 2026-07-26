@@ -1,0 +1,11 @@
+Star versus snowflake — the trade-off.
+
+Star and snowflake aren't rival philosophies — they're two settings of one dial: how normalized the dimensions are. And everything else follows from that single choice.
+
+Line them up on that one axis. In a star, dimensions are denormalized and flat; in a snowflake, normalized and multi-level. The star has fewer joins, the snowflake more. The star is faster to query, the snowflake slower. The star's queries are low in complexity, the snowflake's high. The star has fewer foreign keys, the snowflake more. The star carries more redundancy, the snowflake less. The star uses more storage, the snowflake less. And the star is a top-down design, the snowflake bottom-up.
+
+Read that left to right, and the pattern is clear. The star spends storage to buy speed and simplicity. The snowflake spends speed and simplicity to buy storage and tidiness.
+
+So which usually wins? For the overwhelming majority of warehouses, the star. And the reasoning is economic. Storage is cheap; query time and analyst effort are expensive — so the star spends the cheap resource to save the costly ones. Simplicity compounds — simpler SQL, easier BI-tool modelling, fewer ways to get a join wrong. And the snowflake's one headline saving, space, is the thing that matters least — which is exactly where the star is weakest anyway.
+
+That said, a snowflake does earn its place, for a specific reason — and the next section expands this. You'd reach for it when you have a genuinely huge dimension with a large, highly repetitive sub-hierarchy; or a sub-dimension shared across several dimensions — an outrigger, like Jabra's geography; or a tool or governance rule that requires normalized reference data. Same dial, opposite ends: the star trades storage for speed and simplicity, the snowflake the reverse. Default to the star, and snowflake a dimension only when a concrete reason forces it.

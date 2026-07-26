@@ -1,0 +1,23 @@
+# Physical design — a Sales star walkthrough
+
+## FACT_SALES — grain: one order line
+
+```
+sales_key                          surrogate PK
+order_date_key … promotion_key     FKs → dims
+order_id, order_status             degenerate dims
+quantity … line_total              measures
+```
+
+## The dimension points
+
+- **DIM_DATE** — YYYYMMDD key, calendar + fiscal
+- **DIM_CUSTOMER** *(SCD-2)* — SK + NK + geography + history
+- **DIM_PRODUCT** *(SCD-2)* — SK + NK + line/category + price
+- **DIM_CHANNEL** · **DIM_PROMOTION**
+
+## Design choices worth naming
+
+- **Surrogate key** everywhere · **natural key** kept to trace source
+- **SCD-2** on Customer & Product · **audit** `insert_dt`/`update_dt`
+- **Degenerate dims** on the fact, no table

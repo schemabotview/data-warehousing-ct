@@ -1,0 +1,20 @@
+# Why denormalized dimensions win for BI
+
+## Denormalized = flat
+
+- Normalized: customer → city → province → region → country
+- **Flat** `DIM_CUSTOMER`: all of it as **columns**, one table
+
+## The four wins
+
+- **Fewer joins → faster** — the big one; join cost dominates
+- **Simpler SQL** — "sales by region" = **one** join, not four hops
+- **All in one place** — browse, filter, expose easily
+- **Self-documenting** — the table *is* the list of slices
+
+## Why the redundancy is safe
+
+- Dimensions are **load-once, read-many** — ETL controls writes
+- No ad-hoc updates → **no anomalies**; cost is just **storage** (cheap)
+
+> Normalize to protect writes · **denormalize to accelerate reads**

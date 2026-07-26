@@ -1,0 +1,22 @@
+# Choosing a schema for your workload
+
+## Default — start with a **star**
+
+- Flat, denormalized dims: **fastest, simplest, BI-friendly**
+- Make it the default; deviate only with a reason
+
+## Snowflake — by exception, per dimension
+
+- A **huge** dim with a repetitive sub-tree (real storage saving)
+- A **shared** sub-dim → an **outrigger** (Jabra `DIM_GEOGRAPHY`)
+- A **tool / governance** rule mandating normalized data
+- Snowflake the *one* dim that needs it — a scalpel, not the default
+
+## Galaxy — grow into it
+
+- Model one process as a star · add the next **reusing conformed dims**
+- Plan with the **bus matrix**
+
+## Modern tilt
+
+- Columnar MPP → cheaper joins & storage → **even more star** (module 10)

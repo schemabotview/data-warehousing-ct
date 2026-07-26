@@ -1,0 +1,21 @@
+# Keys in the physical model — PK · SK · FK · NK
+
+## The four roles
+
+- **SK** — surrogate key: minted integer per dim row (`1101`)
+- **PK** — primary key; in a dim it **is** the SK → tagged `PK|SK`
+- **FK** — on the **fact**, references a dim's PK
+- **NK** — natural/business key, kept as an **attribute** (`C-4471`)
+
+## How they connect the star
+
+```
+FACT_SALES.customer_key (FK) ─► DIM_CUSTOMER.customer_key (PK|SK)
+                                DIM_CUSTOMER.customer_id  (NK) → source
+```
+- FK → PK/SK **is** the star · NK never a join key
+
+## Why split SK from NK
+
+- Join on **surrogate** — fast, source-independent, **carries SCD history**
+- Keep **natural** key as the **audit trail** home
