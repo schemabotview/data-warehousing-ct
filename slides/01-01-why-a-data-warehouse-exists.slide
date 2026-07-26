@@ -1,0 +1,13 @@
+# Why a data warehouse exists
+
+## Operational systems answer "now"
+
+- Tuned for **tiny, constant reads & writes** — one order, one customer, one account
+- Heavy analytical scans **slow the business down**
+- Data sits **siloed** across many separate systems
+
+## The warehouse answers "over time"
+
+- A **central store** that collects from every source system
+- Cleaned & organized **once**, with **history kept**
+- Built for **reading & analysis** (OLAP) — fast, and never touches production

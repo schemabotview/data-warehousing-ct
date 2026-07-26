@@ -1,0 +1,7 @@
+Why a data warehouse exists.
+
+Your operational databases are built to answer one kind of question, fast: what is true right now — for this order, this customer, this account. They are tuned for tiny, constant reads and writes, not for scanning years of history across millions of rows.
+
+But the business needs the other kind of question. What happened across everything, over time? Total sales by region last quarter. Which products sell together. How a customer's value changed year over year. Run a question like that on the live operational system, and you slow the business down — and even then, you still can't reach the data sitting in all the other systems beside it.
+
+A data warehouse is a separate, central store. It collects data from all of those source systems, cleans and organizes it once, and keeps its history. And because it is built for reading and analysis instead of transactions, those heavy questions run fast — and they never touch production.
