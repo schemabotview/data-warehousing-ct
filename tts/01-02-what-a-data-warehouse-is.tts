@@ -1,0 +1,11 @@
+What a data warehouse is.
+
+A data warehouse is a central repository. It collects data from many separate source systems into one place, and it is built for analysis and reporting rather than day-to-day transactions. The classic definition, from Bill Inmon, names four traits that set it apart from an operational database.
+
+First, it is subject-oriented. It is organized around the things the business analyzes — sales, customers, products — not around the individual applications that happened to produce the data.
+
+Second, it is integrated. Data arriving from many systems is cleaned and made consistent on the way in: one currency, one date format, one definition of a customer. So the numbers reconcile no matter which source they came from.
+
+Third, it is time-variant. It keeps history. Where an operational system simply overwrites the current value, the warehouse keeps the whole series — so you can compare this quarter against the same quarter last year.
+
+And fourth, it is non-volatile. Data is loaded and then read, not continuously changed in place. A load adds new data; it does not overwrite what is already there. So a report you run twice gives you the same answer both times.

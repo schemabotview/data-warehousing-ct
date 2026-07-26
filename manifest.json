@@ -18,6 +18,13 @@
           "notebook": "notebooks/01-02-what-a-data-warehouse-is.ipynb",
           "slide": "slides/01-02-what-a-data-warehouse-is.slide",
           "scene": "dw-architecture",
+          "focus": [
+            "warehouse"
+          ],
+          "highlight": [
+            "fact",
+            "dim"
+          ],
           "spine": true
         },
         {
