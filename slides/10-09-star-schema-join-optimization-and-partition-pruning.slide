@@ -1,4 +1,4 @@
-# Star-join optimization & partition pruning
+# Star-join optimization
 
 ## Partition pruning — scan only relevant segments
 
@@ -16,7 +16,3 @@
 ## Broadcast & co-located joins
 
 - Small dims **broadcast** to every node · shared dist key → **no shuffle** (§05)
-
-## Star beats snowflake **harder** here
-
-- Pruning/pushdown/broadcast love **few, wide, one-hop** dims

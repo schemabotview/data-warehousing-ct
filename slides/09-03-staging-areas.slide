@@ -16,7 +16,3 @@
 
 - **Transient** — truncate & reload each run (working buffer)
 - **Persistent** — keep every extract (raw archive, ~DV raw layer)
-
-## ETL vs ELT
-
-- ETL: staging in the engine · ELT: **raw tables in the warehouse**

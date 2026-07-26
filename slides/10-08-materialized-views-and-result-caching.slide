@@ -1,4 +1,4 @@
-# Materialized views & result caching
+# Materialized views
 
 ## The fastest query is one you **don't recompute**
 
