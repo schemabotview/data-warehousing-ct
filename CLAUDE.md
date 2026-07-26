@@ -24,18 +24,18 @@ Same as the app repo: **step by step, one small slice, review gate between each.
 
 ```
 data-warehousing-ct/
-  notebooks/   # one .ipynb per SECTION (one ## section each) — source of truth for prose/code
+  md/          # one .md per SECTION (one ## section each) — the source of truth, all section content
   tts/         # one .tts per section (plain spoken narration script)
   audio/       # one .wav per section (generated from tts/ via Colab)
   slides/      # one .slide per section (authored right-pane title + bullets)
   scripts/     # Colab audio generator (added later)
-  manifest.json  # wires sections → notebook / slide / scene / highlight / focus / audio
+  manifest.json  # wires sections → md / slide / scene / highlight / focus / audio
   CLAUDE.md · README.md
 ```
 
-Naming: every artifact for a section shares the stem `<NN>-<SS>-<slug>`, where `NN` = module number, `SS` = section position (so a sorted glob stays in reading order): `notebooks/<NN>-<SS>-<slug>.ipynb`, `tts/…​.tts` → `audio/…​.wav`, `slides/…​.slide`.
+Naming: every artifact for a section shares the stem `<NN>-<SS>-<slug>`, where `NN` = module number, `SS` = section position (so a sorted glob stays in reading order): `md/<NN>-<SS>-<slug>.md`, `tts/…​.tts` → `audio/…​.wav`, `slides/…​.slide`.
 
-The `.slide` format is a one-screen, scannable Markdown subset — a `# Title`, then `## ` sub-labels, short paragraphs, fenced ` ```code``` ` blocks, and numbered / `- ` lists, each key term marked with inline **`**bold**`** (rendered bright white, the rest a softer gray). **Keep the whole slide inside the fixed 1920×1080 frame:** the app's right pane does not scroll or auto-shrink type, so an over-long slide clips top and bottom — trim it to fit (drop connective prose the narration already carries) rather than expecting the engine to resize. Title may be punchier than the notebook `## ` heading.
+The `.slide` format is a one-screen, scannable Markdown subset — a `# Title`, then `## ` sub-labels, short paragraphs, fenced ` ```code``` ` blocks, and numbered / `- ` lists, each key term marked with inline **`**bold**`** (rendered bright white, the rest a softer gray). **Keep the whole slide inside the fixed 1920×1080 frame:** the app's right pane does not scroll or auto-shrink type, so an over-long slide clips top and bottom — trim it to fit (drop connective prose the narration already carries) rather than expecting the engine to resize. Title may be punchier than the `.md` `## ` heading.
 
 ## Scenes (app-side — to be authored)
 
@@ -55,4 +55,4 @@ The course outline (module spine + per-module sections + the `.md` → module so
 
 ## Status
 
-Scaffolded + spine settled (`README.md`: 10 modules × 100 sections). `manifest.json` wires the full spine (heading + notebook/slide/scene paths, `spine:true`, `role:hook` on each §01); `audio` and per-section `focus`/`highlight` are added as sections and scenes are authored. Folder scaffold in place (`notebooks/ tts/ audio/ slides/ scripts/`, empty). Concept wired into the app catalog (`graphl-render-app/src/content/catalog.ts` → `data-warehousing`, replacing the old `data-modeling` placeholder). **Nothing authored yet**; scenes not yet built. Next: author module 01 end-to-end + port the `dw-architecture` scene.
+Scaffolded + spine settled (`README.md`: 10 modules × 100 sections). `manifest.json` wires the full spine (heading + md/slide/scene paths, `spine:true`, `role:hook` on each §01); `audio` and per-section `focus`/`highlight` are added as sections and scenes are authored. Folder scaffold in place (`md/ tts/ audio/ slides/ scripts/`). Concept wired into the app catalog (`graphl-render-app/src/content/catalog.ts` → `data-warehousing`, replacing the old `data-modeling` placeholder). **Sections 01-01 & 01-02 authored** (`.md` source of truth + distilled `.slide` + `.tts`), wired onto the `dw-architecture` scene (ported app-side). `audio/` empty (owner generates `.wav` via Colab). Next: module 01 §03–§10.
