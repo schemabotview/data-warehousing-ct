@@ -12,6 +12,7 @@
 - **Time-variant** — keeps **history**; compare this quarter to last year
 - **Non-volatile** — loaded then read; loads add, they don't overwrite
 
-## Built from
+## At a glance
 
-- **sources → ETL → storage → metadata → marts → BI** *(detailed in §04)*
+- **Built from** — sources → ETL → storage → metadata → marts → BI *(§04)*
+- **Types** — Enterprise DW (whole org) · Data mart (one dept, §05) · Cloud DW — BigQuery · Redshift · Snowflake *(Mod 10)*

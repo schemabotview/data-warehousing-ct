@@ -12,4 +12,6 @@ Third, it is time-variant. It keeps history. Where an operational system simply 
 
 And fourth, it is non-volatile. Data is loaded and then read, not continuously changed in place. A load adds new data; it does not overwrite what is already there. So a report you run twice gives you the same answer both times.
 
-A warehouse is really a pipeline, not just a database. Data flows from the source systems, through E-T-L, into storage, described by metadata, and out to data marts and B-I tools. We'll open up each of those components next.
+A warehouse is really a pipeline, not just a database. Data flows from the source systems, through E-T-L, into storage, described by metadata, and out to data marts and B-I tools.
+
+And warehouses come in a few shapes: an enterprise data warehouse serving the whole organization, a data mart scoped to a single department, and cloud data warehouses — like BigQuery, Redshift, and Snowflake — that scale elastically. We'll open up the components next.
