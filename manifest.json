@@ -158,6 +158,12 @@
           "md": "md/02-02-the-normal-forms-1nf-2nf-3nf.md",
           "slide": "slides/02-02-the-normal-forms-1nf-2nf-3nf.slide",
           "scene": "star-schema",
+          "focus": [
+            "dim-customer"
+          ],
+          "highlight": [
+            "dim-customer"
+          ],
           "spine": true
         },
         {
@@ -165,6 +171,13 @@
           "md": "md/02-03-splitting-to-3nf-a-worked-example.md",
           "slide": "slides/02-03-splitting-to-3nf-a-worked-example.slide",
           "scene": "star-schema",
+          "focus": [
+            "fact"
+          ],
+          "highlight": [
+            "fact",
+            "dim-customer"
+          ],
           "spine": true
         },
         {
@@ -172,6 +185,12 @@
           "md": "md/02-04-denormalization-trading-redundancy-for-speed.md",
           "slide": "slides/02-04-denormalization-trading-redundancy-for-speed.slide",
           "scene": "star-schema",
+          "focus": [
+            "dim-product"
+          ],
+          "highlight": [
+            "dim-product"
+          ],
           "spine": true
         },
         {
@@ -179,6 +198,17 @@
           "md": "md/02-05-keys-super-candidate-primary-alternate.md",
           "slide": "slides/02-05-keys-super-candidate-primary-alternate.slide",
           "scene": "star-schema",
+          "focus": [
+            "fact"
+          ],
+          "highlight": [
+            "f-sales-key",
+            "dimc-key",
+            "dimpr-key",
+            "dimd-key",
+            "dimch-key",
+            "dimpm-key"
+          ],
           "spine": true
         },
         {
@@ -186,6 +216,16 @@
           "md": "md/02-06-composite-keys.md",
           "slide": "slides/02-06-composite-keys.slide",
           "scene": "star-schema",
+          "focus": [
+            "fact"
+          ],
+          "highlight": [
+            "f-date",
+            "f-customer",
+            "f-product",
+            "f-channel",
+            "f-promo"
+          ],
           "spine": true
         },
         {
@@ -193,6 +233,21 @@
           "md": "md/02-07-foreign-keys-and-referential-integrity.md",
           "slide": "slides/02-07-foreign-keys-and-referential-integrity.slide",
           "scene": "star-schema",
+          "focus": [
+            "fact"
+          ],
+          "highlight": [
+            "f-date",
+            "f-customer",
+            "f-product",
+            "f-channel",
+            "f-promo",
+            "dimd-key",
+            "dimc-key",
+            "dimpr-key",
+            "dimch-key",
+            "dimpm-key"
+          ],
           "spine": true
         },
         {
@@ -200,6 +255,13 @@
           "md": "md/02-08-strong-vs-weak-entities.md",
           "slide": "slides/02-08-strong-vs-weak-entities.slide",
           "scene": "star-schema",
+          "focus": [
+            "fact"
+          ],
+          "highlight": [
+            "f-order-id",
+            "f-status"
+          ],
           "spine": true
         },
         {
@@ -207,6 +269,15 @@
           "md": "md/02-09-natural-key-vs-surrogate-key.md",
           "slide": "slides/02-09-natural-key-vs-surrogate-key.slide",
           "scene": "star-schema",
+          "focus": [
+            "dim-customer"
+          ],
+          "highlight": [
+            "dimc-key",
+            "dimc-id",
+            "dimpr-key",
+            "dimpr-id"
+          ],
           "spine": true
         },
         {
@@ -214,6 +285,22 @@
           "md": "md/02-10-why-warehouses-prefer-surrogate-keys.md",
           "slide": "slides/02-10-why-warehouses-prefer-surrogate-keys.slide",
           "scene": "star-schema",
+          "focus": [
+            "fact"
+          ],
+          "highlight": [
+            "dimc-key",
+            "dimpr-key",
+            "dimd-key",
+            "dimch-key",
+            "dimpm-key",
+            "f-sales-key",
+            "f-date",
+            "f-customer",
+            "f-product",
+            "f-channel",
+            "f-promo"
+          ],
           "spine": true
         }
       ]
